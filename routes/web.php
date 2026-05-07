@@ -16,7 +16,6 @@ Route::middleware(['auth'])->group(function () {
 
 // Chatbot Routes - Single Session Chat
 Route::middleware(['auth'])->group(function () {
-    Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
     Route::post('/chatbot/send-message', [ChatbotController::class, 'sendMessage'])->name('chatbot.send-message');
     Route::post('/chatbot/clear', [ChatbotController::class, 'clearChat'])->name('chatbot.clear');
 });

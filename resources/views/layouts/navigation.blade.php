@@ -38,10 +38,7 @@
                             </x-nav-link>
                         @endif
 
-                        <x-nav-link :href="route('chatbot.index')" :active="request()->routeIs('chatbot.*')">
-                            {{ __('Chatbot') }}
-                        </x-nav-link>
-                    @endif
+                        @endif
                 </div>
             </div>
 
@@ -108,11 +105,6 @@
                 </x-responsive-nav-link>
             @endif
 
-            @if(auth()->user()->role !== 'admin')
-                <x-responsive-nav-link :href="route('chatbot.index')" :active="request()->routeIs('chatbot.*')">
-                    {{ __('Chatbot') }}
-                </x-responsive-nav-link>
-            @endif
         </div>
 
         <!-- Responsive Settings Options -->

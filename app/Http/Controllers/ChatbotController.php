@@ -73,25 +73,38 @@ class ChatbotController extends Controller
     private function generateGeminiResponse(string $userMessage): string
     {
         try {
-            $apiKey = env('GEMINI_API_KEY');
+            $apiKey = config('services.gemini.key', env('GEMINI_API_KEY', ''));
             
-            if (!$apiKey) {
-                return 'Maaf, API key Gemini tidak dikonfigurasi. Silakan hubungi administrator.';
+            if (empty($apiKey)) {
+                \Illuminate\Support\Facades\Log::warning('Gemini API key is not configured.');
+                return $this->getFallbackResponse($userMessage);
             }
 
-            // Create prompt for Gemini - FOKUS TEKNOLOGI SAJA
-            $systemPrompt = "Anda adalah technical support chatbot yang specialist di bidang TEKNOLOGI. "
-                . "PENTING: Anda HANYA menjawab pertanyaan yang berkaitan dengan TEKNOLOGI, PROGRAMMING, TEKNIS, IT, SOFTWARE, HARDWARE, DATABASE, CLOUD, CYBERSECURITY, dll. "
-                . "Jika user bertanya tentang hal NON-TEKNOLOGI (seperti kuliner, olahraga, gosip, etc), TOLAK dengan halus dan ajak mereka untuk bertanya tentang TEKNOLOGI. "
-                . "Gunakan bahasa Indonesia yang ramah dan profesional. "
-                . "Berikan jawaban yang SINGKAT dan PRAKTIS (maksimal 3-4 kalimat). "
-                . "Jika ada kode atau command teknis, berikan dalam format yang jelas.";
+            $systemPrompt = config('chatbot.system_prompt', "Anda adalah asisten AI khusus IT Helpdesk yang cerdas dan profesional. "
+                . "Tugas UTAMA Anda adalah HANYA membantu pengguna dengan pertanyaan atau masalah seputar TEKNOLOGI (seperti komputer, jaringan, software, hardware, internet, programming, dan troubleshooting IT). "
+                . "JIKA pengguna bertanya di luar topik teknologi (misalnya: resep makanan, politik, hiburan, olahraga, kehidupan sehari-hari, dll), TOLAK dengan sopan dan jelaskan bahwa Anda hanya dapat membantu seputar masalah teknologi atau IT Helpdesk. "
+                . "Berikan jawaban yang akurat dan solutif. PENTING: Jawablah dengan SINGKAT, PADAT, dan LANGSUNG KE INTINYA (to-the-point). Jangan bertele-tele. "
+                . "PENTING: Jangan gunakan format Markdown apa pun (jangan gunakan simbol seperti ***, ###, atau ---). Jawab dengan teks biasa (plain text) saja.");
             
-            $fullPrompt = $systemPrompt . "\n\nPertanyaan pengguna: " . $userMessage;
+            // Build conversation history from session
+            $messages = session()->get('chatbot_messages', []);
+            $history = "";
+            if (!empty($messages)) {
+                $history = "Riwayat Percakapan Sebelumnya:\n";
+                // Ambil 6 pesan terakhir agar AI ingat konteks tanpa terlalu menghabiskan token
+                $recentMessages = array_slice($messages, -6);
+                foreach ($recentMessages as $msg) {
+                    $role = $msg['sender_type'] === 'user' ? 'Pengguna' : 'AI';
+                    $history .= "{$role}: {$msg['message']}\n";
+                }
+                $history .= "\n";
+            }
 
-            // Call Gemini API
-            $response = Http::timeout(10)->post(
-                'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent',
+            $fullPrompt = $systemPrompt . "\n\n" . $history . "Pertanyaan pengguna saat ini: " . $userMessage . "\n\nJawaban AI:";
+
+            // Call Gemini API (with withoutVerifying to prevent local SSL errors on Windows)
+            $response = Http::timeout(60)->withoutVerifying()->post(
+                'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?key=' . $apiKey,
                 [
                     'contents' => [
                         [
@@ -103,14 +116,11 @@ class ChatbotController extends Controller
                         ]
                     ],
                     'generationConfig' => [
-                        'temperature' => 0.7,
-                        'topP' => 0.9,
+                        'temperature' => 0.8,
+                        'topP' => 0.95,
                         'topK' => 40,
-                        'maxOutputTokens' => 300,
+                        'maxOutputTokens' => 8192,
                     ]
-                ],
-                [
-                    'x-goog-api-key' => $apiKey,
                 ]
             );
 
@@ -118,17 +128,18 @@ class ChatbotController extends Controller
                 $data = $response->json();
                 
                 if (isset($data['candidates'][0]['content']['parts'][0]['text'])) {
-                    $geminiResponse = $data['candidates'][0]['content']['parts'][0]['text'];
-                    return trim($geminiResponse);
+                    return trim($data['candidates'][0]['content']['parts'][0]['text']);
                 }
             }
+            
+            \Illuminate\Support\Facades\Log::error('Gemini API Response Error: ' . $response->body());
 
-            // Fallback jika ada error
+            // Fallback jika ada error (bukan 200 OK)
             return $this->getFallbackResponse($userMessage);
 
         } catch (\Exception $e) {
             // Log error
-            \Log::error('Gemini AI Error: ' . $e->getMessage());
+            \Illuminate\Support\Facades\Log::error('Gemini AI Error: ' . $e->getMessage());
             
             // Return fallback response
             return $this->getFallbackResponse($userMessage);
@@ -140,47 +151,49 @@ class ChatbotController extends Controller
      */
     private function getFallbackResponse(string $message): string
     {
+        // Use regex for more robust keyword matching
         $message = strtolower($message);
 
-        // Check for technology-related keywords
-        if (strpos($message, 'error') !== false || strpos($message, 'bug') !== false || strpos($message, 'masalah') !== false) {
-            return 'Jelaskan lebih detail tentang error atau masalah teknis yang Anda hadapi. Berikan informasi seperti: pesan error, kapan terjadi, dan langkah-langkah yang sudah Anda coba.';
+        $fallbacks = [
+            '/\b(wifi|internet|jaringan|koneksi|sinyal|lemot|lag)\b/i' => 
+                "Sepertinya Anda mengalami masalah koneksi. Coba langkah berikut:\n1. Pastikan WiFi Anda menyala.\n2. Coba restart router atau modem Anda.\n3. Periksa apakah perangkat lain bisa terhubung.\n\nJika tetap tidak bisa, berikan detail pesan errornya.",
+            
+            '/\b(error|bug|masalah|rusak|gagal|crash|freeze)\b/i' => 
+                "Jelaskan lebih detail tentang error atau masalah teknis yang Anda hadapi. Berikan informasi seperti: pesan error, kapan terjadi, dan langkah-langkah yang sudah Anda coba.",
+            
+            '/\b(install|setup|instalasi|pasang|download)\b/i' => 
+                "Untuk proses instalasi, saya perlu tahu aplikasi atau tool apa yang ingin Anda install. Berikan detail platform (Windows/Linux/Mac) dan versinya.",
+            
+            '/\b(database|sql|mysql|postgresql|query|tabel)\b/i' => 
+                "Pertanyaan tentang database sangat umum. Spesifikasi mana: struktur tabel, query, backup, atau performa?",
+            
+            '/\b(api|rest|endpoint|json)\b/i' => 
+                "Untuk membantu dengan API, sebutkan teknologi yang digunakan dan masalah spesifiknya.",
+            
+            '/\b(programming|coding|code|php|python|javascript|java|koding)\b/i' => 
+                "Pilih bahasa pemrograman yang ingin Anda tanyakan (PHP, Python, JavaScript, Java, dll) dan masalah spesifiknya.",
+            
+            '/\b(server|hosting|vps|cloud|domain)\b/i' => 
+                "Untuk pertanyaan server/hosting, jelaskan setup Anda (on-premise, cloud, VPS) dan masalahnya.",
+            
+            '/\b(security|password|encrypt|hack|aman|login|lupa)\b/i' => 
+                "Keamanan teknologi adalah topik penting. Spesifikkan: tipe security yang Anda pertanyakan atau masalah keamanan yang Anda hadapi (misal: lupa password).",
+            
+            '/\b(performance|speed|lambat|berat|lemot|ngelag)\b/i' => 
+                "Untuk optimasi performa, jelaskan: aplikasi apa, resource usage berapa, dan sudah mencoba apa saja?",
+            
+            '/\b(halo|hi|hello|pagi|siang|sore|malam|hai)\b/i' => 
+                "Halo! 👋 Saya adalah asisten AI Helpdesk. Sedang ada kendala yang bisa saya bantu hari ini?",
+        ];
+
+        foreach ($fallbacks as $pattern => $response) {
+            if (preg_match($pattern, $message)) {
+                return $response;
+            }
         }
 
-        if (strpos($message, 'install') !== false || strpos($message, 'setup') !== false || strpos($message, 'instal') !== false) {
-            return 'Untuk proses instalasi, saya perlu tahu aplikasi atau tool apa yang ingin Anda install. Berikan detail platform (Windows/Linux/Mac) dan versinya.';
-        }
-
-        if (strpos($message, 'database') !== false || strpos($message, 'sql') !== false || strpos($message, 'mysql') !== false) {
-            return 'Pertanyaan tentang database sangat umum. Spesifikasi mana: struktur tabel, query, backup, atau performa?';
-        }
-
-        if (strpos($message, 'api') !== false || strpos($message, 'rest') !== false) {
-            return 'Untuk membantu dengan API, sebutkan teknologi yang digunakan dan masalah spesifiknya.';
-        }
-
-        if (strpos($message, 'programming') !== false || strpos($message, 'coding') !== false || strpos($message, 'code') !== false) {
-            return 'Pilih bahasa pemrograman yang ingin Anda tanyakan (PHP, Python, JavaScript, Java, dll) dan masalah spesifiknya.';
-        }
-
-        if (strpos($message, 'server') !== false || strpos($message, 'hosting') !== false) {
-            return 'Untuk pertanyaan server/hosting, jelaskan setup Anda (on-premise, cloud, VPS) dan masalahnya.';
-        }
-
-        if (strpos($message, 'security') !== false || strpos($message, 'password') !== false || strpos($message, 'encrypt') !== false) {
-            return 'Keamanan teknologi adalah topik penting. Spesifikkan: tipe security yang Anda pertanyakan atau masalah keamanan yang Anda hadapi.';
-        }
-
-        if (strpos($message, 'performance') !== false || strpos($message, 'speed') !== false || strpos($message, 'lambat') !== false) {
-            return 'Untuk optimasi performa, jelaskan: aplikasi apa, resource usage berapa, dan sudah mencoba apa saja?';
-        }
-
-        if (strpos($message, 'halo') !== false || strpos($message, 'hi') !== false || strpos($message, 'hello') !== false) {
-            return 'Halo! 👋 Saya adalah technical support chatbot. Tanyakan apapun tentang TEKNOLOGI, PROGRAMMING, IT, atau masalah teknis lainnya.';
-        }
-
-        // Default: redirect ke topik teknologi
-        return 'Maaf, saya hanya bisa membantu dengan pertanyaan seputar TEKNOLOGI, PROGRAMMING, IT, dan masalah teknis lainnya. Ada yang ingin ditanyakan tentang teknologi?';
+        // Default: generic helpful response when API fails
+        return "Maaf, sepertinya saya sedang mengalami gangguan koneksi ke server AI utama. Silakan coba tanyakan lagi dalam beberapa saat, atau hubungi tim support jika mendesak.";
     }
 
     /**

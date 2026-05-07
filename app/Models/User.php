@@ -67,6 +67,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the chatbot conversations for the user.
+     */
+    public function chatbotConversations(): HasMany
+    {
+        return $this->hasMany(ChatbotConversation::class);
+    }
+
+    /**
      * Send the password reset notification.
      */
     public function sendPasswordResetNotification($token): void

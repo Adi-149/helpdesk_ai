@@ -37,6 +37,10 @@
                                 {{ __('Tiket') }}
                             </x-nav-link>
                         @endif
+
+                        <x-nav-link :href="route('chatbot.index')" :active="request()->routeIs('chatbot.*')">
+                            {{ __('Chatbot') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -101,6 +105,12 @@
             @else
                 <x-responsive-nav-link :href="route('tickets.index')" :active="request()->routeIs('tickets.index', 'tickets.create', 'tickets.show')">
                     {{ __('Tiket') }}
+                </x-responsive-nav-link>
+            @endif
+
+            @if(auth()->user()->role !== 'admin')
+                <x-responsive-nav-link :href="route('chatbot.index')" :active="request()->routeIs('chatbot.*')">
+                    {{ __('Chatbot') }}
                 </x-responsive-nav-link>
             @endif
         </div>

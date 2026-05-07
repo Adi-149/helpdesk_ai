@@ -104,7 +104,7 @@ class ChatbotController extends Controller
 
             // Call Gemini API (with withoutVerifying to prevent local SSL errors on Windows)
             $response = Http::timeout(60)->withoutVerifying()->post(
-                'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?key=' . $apiKey,
+                'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=' . $apiKey,
                 [
                     'contents' => [
                         [

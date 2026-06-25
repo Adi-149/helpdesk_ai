@@ -11,6 +11,7 @@
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <!-- Top Stats Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <!-- Total Tiket -->
             <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white shadow-lg">
                 <div class="flex items-end justify-between">
                     <div>
@@ -21,39 +22,42 @@
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white shadow-lg">
+            <!-- Belum Ditangani -->
+            <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-lg p-6 text-white shadow-lg">
                 <div class="flex items-end justify-between">
                     <div>
-                        <p class="text-green-100 text-sm font-medium">Ditangani</p>
-                        <p class="text-4xl font-bold">{{ $assignedTickets }}</p>
-                    </div>
-                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                </div>
-            </div>
-
-            <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-lg p-6 text-white shadow-lg">
-                <div class="flex items-end justify-between">
-                    <div>
-                        <p class="text-yellow-100 text-sm font-medium">Belum Ditangani</p>
+                        <p class="text-red-100 text-sm font-medium">Belum Ditangani</p>
                         <p class="text-4xl font-bold">{{ $unassignedTickets }}</p>
                     </div>
                     <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-6 text-white shadow-lg">
+            <!-- Sedang Diproses -->
+            <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-lg p-6 text-white shadow-lg">
                 <div class="flex items-end justify-between">
                     <div>
-                        <p class="text-purple-100 text-sm font-medium">Sedang Diproses</p>
+                        <p class="text-yellow-100 text-sm font-medium">Sedang Diproses</p>
                         <p class="text-4xl font-bold">{{ $ticketsByStatus['progress'] }}</p>
                     </div>
                     <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
                 </div>
             </div>
+
+            <!-- Selesai (Resolved) -->
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white shadow-lg">
+                <div class="flex items-end justify-between">
+                    <div>
+                        <p class="text-green-100 text-sm font-medium">Selesai</p>
+                        <p class="text-4xl font-bold">{{ $ticketsByStatus['resolved'] }}</p>
+                    </div>
+                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                </div>
+            </div>
         </div>
 
-        <!-- Status & Priority Box -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- Status & Priority & Category Box -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
             <!-- Status Breakdown -->
             <div class="bg-white rounded-lg shadow p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-6">Status Tiket</h3>
@@ -147,6 +151,37 @@
                             <p class="text-xs text-gray-500">{{ $totalTickets > 0 ? round(($ticketsByPriority['low'] / $totalTickets) * 100) : 0 }}%</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Category Breakdown -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-6">Kategori Tiket</h3>
+                <div class="space-y-4">
+                    @php
+                        $categoryStyles = [
+                            'Hardware' => ['bg' => 'bg-blue-50', 'border' => 'border-blue-500', 'text' => 'text-blue-600'],
+                            'Software' => ['bg' => 'bg-purple-50', 'border' => 'border-purple-500', 'text' => 'text-purple-600'],
+                            'Jaringan' => ['bg' => 'bg-green-50', 'border' => 'border-green-500', 'text' => 'text-green-600'],
+                            'Akun' => ['bg' => 'bg-orange-50', 'border' => 'border-orange-500', 'text' => 'text-orange-600'],
+                            'Lainnya' => ['bg' => 'bg-gray-50', 'border' => 'border-gray-500', 'text' => 'text-gray-600'],
+                        ];
+                    @endphp
+                    @foreach($ticketsByCategory as $catName => $catCount)
+                        @php
+                            $style = $categoryStyles[$catName] ?? ['bg' => 'bg-gray-50', 'border' => 'border-gray-500', 'text' => 'text-gray-600'];
+                        @endphp
+                        <div class="flex items-center justify-between p-3 {{ $style['bg'] }} rounded-lg border-l-4 {{ $style['border'] }}">
+                            <div>
+                                <p class="text-sm font-medium text-gray-700">{{ $catName }}</p>
+                                <p class="text-xs text-gray-500">Masalah terkait {{ $catName }}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold {{ $style['text'] }}">{{ $catCount }}</p>
+                                <p class="text-xs text-gray-500">{{ $totalTickets > 0 ? round(($catCount / $totalTickets) * 100) : 0 }}%</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

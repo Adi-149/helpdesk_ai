@@ -37,5 +37,7 @@
         @auth
             <x-chatbot-widget />
         @endauth
+
+        @stack('scripts')
     </body>
 </html>

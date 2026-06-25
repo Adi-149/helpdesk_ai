@@ -10,17 +10,15 @@
             <form method="POST" action="{{ route('tickets.assign', $ticket->id) }}">
                 @csrf
 
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Pilih Support</label>
-                    <select name="assigned_to" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
-                        @foreach($supports as $support)
-                            <option value="{{ $support->id }}">{{ $support->name }}</option>
-                        @endforeach
-                    </select>
+                <input type="hidden" name="assigned_to" value="{{ auth()->id() }}">
+
+                <div class="mb-6 p-4 bg-indigo-50 border border-indigo-100 rounded text-indigo-800 text-sm">
+                    Apakah Anda yakin ingin menugaskan tiket ini ke diri Anda sendiri (<strong>{{ auth()->user()->name }}</strong>)?
                 </div>
 
-                <div class="flex justify-end">
-                    <button class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Tetapkan</button>
+                <div class="flex justify-end gap-3">
+                    <a href="{{ route('support.tickets') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Batal</a>
+                    <button class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Ambil Tiket</button>
                 </div>
             </form>
         </div>

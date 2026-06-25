@@ -23,6 +23,12 @@
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Kelola Pengguna') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('tickets.index')" :active="request()->routeIs('tickets.index', 'tickets.create', 'tickets.show')">
+                            {{ __('Tiket') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.reports')" :active="request()->routeIs('admin.reports')">
+                            {{ __('Laporan') }}
+                        </x-nav-link>
                     @else
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dasbor') }}
@@ -39,6 +45,43 @@
                         @endif
 
                         @endif
+                </div>
+            </div>
+
+            <!-- Notifications Dropdown -->
+            <div class="hidden sm:flex sm:items-center sm:ms-3">
+                <div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false" id="notification-dropdown-container">
+                    <button @click="open = ! open" class="relative p-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition duration-150 ease-in-out">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <!-- Unread Count Badge -->
+                        <span id="nav-notification-badge" class="absolute top-1.5 right-1.5 hidden min-w-[18px] h-[18px] px-1 bg-red-600 border border-white dark:border-gray-800 rounded-full text-[10px] font-bold text-white flex items-center justify-center">0</span>
+                    </button>
+
+                    <div x-show="open"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-95"
+                            class="absolute right-0 mt-2 w-80 rounded-md shadow-lg ltr:origin-top-right rtl:origin-top-left z-50 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 overflow-hidden"
+                            style="display: none;">
+                        <div class="px-4 py-2 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-900">
+                            <span class="text-xs font-semibold text-gray-800 dark:text-gray-200">Notifikasi</span>
+                            <button onclick="markAllNotificationsAsRead(event)" class="text-[10px] text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium bg-transparent border-0 cursor-pointer">Tandai semua dibaca</button>
+                        </div>
+                        
+                        <!-- Notification List (AJAX Filled) -->
+                        <div id="nav-notification-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100 dark:divide-gray-700">
+                            <div class="p-4 text-center text-xs text-gray-500 dark:text-gray-400">Memuat notifikasi...</div>
+                        </div>
+
+                        <a href="{{ route('notifications.index') }}" class="block py-2 text-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 transition duration-150">
+                            Lihat Semua Notifikasi
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -91,20 +134,39 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dasbor') }}
-            </x-responsive-nav-link>
-            
-            @if(auth()->user()->role === 'support')
-                <x-responsive-nav-link :href="route('support.tickets')" :active="request()->routeIs('support.tickets')">
-                    {{ __('Tiket') }}
+            @if(auth()->user()->role === 'admin')
+                <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                    {{ __('Kelola Pengguna') }}
                 </x-responsive-nav-link>
-            @else
                 <x-responsive-nav-link :href="route('tickets.index')" :active="request()->routeIs('tickets.index', 'tickets.create', 'tickets.show')">
                     {{ __('Tiket') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.reports')" :active="request()->routeIs('admin.reports')">
+                    {{ __('Laporan') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dasbor') }}
+                </x-responsive-nav-link>
+                
+                @if(auth()->user()->role === 'support')
+                    <x-responsive-nav-link :href="route('support.tickets')" :active="request()->routeIs('support.tickets')">
+                        {{ __('Tiket') }}
+                    </x-responsive-nav-link>
+                @else
+                    <x-responsive-nav-link :href="route('tickets.index')" :active="request()->routeIs('tickets.index', 'tickets.create', 'tickets.show')">
+                        {{ __('Tiket') }}
+                    </x-responsive-nav-link>
+                @endif
             @endif
 
+            <!-- Mobile Notification Link -->
+            <x-responsive-nav-link :href="route('notifications.index')" :active="request()->routeIs('notifications.index')">
+                <span class="flex items-center justify-between">
+                    <span>{{ __('Notifikasi') }}</span>
+                    <span id="mobile-notification-badge" class="hidden min-w-[18px] h-[18px] px-1 bg-red-600 rounded-full text-[10px] font-bold text-white flex items-center justify-center">0</span>
+                </span>
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -133,3 +195,143 @@
         </div>
     </div>
 </nav>
+
+<script>
+    // AJAX Polling for Notifications
+    document.addEventListener('DOMContentLoaded', function() {
+        const desktopBadge = document.getElementById('nav-notification-badge');
+        const mobileBadge = document.getElementById('mobile-notification-badge');
+        const notificationList = document.getElementById('nav-notification-list');
+        let pollingInterval = null;
+
+        async function fetchNotifications() {
+            try {
+                const response = await fetch('{{ route('notifications.unread') }}', {
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                if (!response.ok) return;
+
+                const data = await response.json();
+                updateNotificationBadge(data.unread_count);
+                updateNotificationList(data.notifications);
+            } catch (error) {
+                console.error('Error fetching notifications:', error);
+            }
+        }
+
+        function updateNotificationBadge(count) {
+            if (count > 0) {
+                if (desktopBadge) {
+                    desktopBadge.textContent = count;
+                    desktopBadge.classList.remove('hidden');
+                    desktopBadge.classList.add('flex');
+                }
+                if (mobileBadge) {
+                    mobileBadge.textContent = count;
+                    mobileBadge.classList.remove('hidden');
+                    mobileBadge.classList.add('flex');
+                }
+            } else {
+                if (desktopBadge) {
+                    desktopBadge.classList.add('hidden');
+                    desktopBadge.classList.remove('flex');
+                }
+                if (mobileBadge) {
+                    mobileBadge.classList.add('hidden');
+                    mobileBadge.classList.remove('flex');
+                }
+            }
+        }
+
+        function updateNotificationList(notifications) {
+            if (!notificationList) return;
+
+            if (notifications.length === 0) {
+                notificationList.innerHTML = `
+                    <div class="p-4 text-center text-xs text-gray-500 dark:text-gray-400">
+                        Tidak ada notifikasi baru
+                    </div>
+                `;
+                return;
+            }
+
+            notificationList.innerHTML = '';
+            notifications.forEach(notif => {
+                const clickUrl = `/notifications/${notif.id}/click`;
+                
+                const item = document.createElement('div');
+                item.className = 'relative hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150';
+                
+                item.innerHTML = `
+                    <div class="flex items-start p-3 gap-3">
+                        <div class="flex-1 min-w-0">
+                            <a href="${clickUrl}" class="block text-[11px] text-gray-700 dark:text-gray-300 leading-tight">
+                                <span class="font-medium text-gray-900 dark:text-gray-100">${notif.data.message || ''}</span>
+                            </a>
+                            <span class="text-[9px] text-gray-400 dark:text-gray-500 mt-1 block">${notif.created_at}</span>
+                        </div>
+                        <button onclick="markAsRead(event, '${notif.id}')" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none self-center" title="Tandai telah dibaca">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                notificationList.appendChild(item);
+            });
+        }
+
+        window.markAsRead = async function(event, notifId) {
+            event.preventDefault();
+            event.stopPropagation();
+            try {
+                const response = await fetch(`/notifications/${notifId}/read`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                if (response.ok) {
+                    fetchNotifications();
+                }
+            } catch (error) {
+                console.error('Error marking notification as read:', error);
+            }
+        };
+
+        window.markAllNotificationsAsRead = async function(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            try {
+                const response = await fetch('{{ route('notifications.mark-all-read') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                if (response.ok) {
+                    fetchNotifications();
+                }
+            } catch (error) {
+                console.error('Error marking all notifications as read:', error);
+            }
+        };
+
+        // Run immediately on page load
+        fetchNotifications();
+
+        // Poll every 10 seconds
+        pollingInterval = setInterval(fetchNotifications, 10000);
+    });
+</script>

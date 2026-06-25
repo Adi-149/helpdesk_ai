@@ -13,7 +13,14 @@ return new class extends Migration
 {
     Schema::create('tickets', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        
+        $isSqlite = Schema::getConnection()->getDriverName() === 'sqlite';
+        if ($isSqlite) {
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+        } else {
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        }
+        
         $table->string('subject');
         $table->text('description');
         $table->string('category');

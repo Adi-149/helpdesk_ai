@@ -1,5 +1,12 @@
 @php
-    $messages = session()->get('chatbot_messages', []);
+    $conversation = \App\Models\ChatbotConversation::where('user_id', auth()->id())
+        ->where('status', 'active')
+        ->first();
+    $messages = $conversation ? $conversation->messages : collect();
+    $userMessageCount = $conversation 
+        ? $messages->where('sender_type', 'user')->count() 
+        : 0;
+    $maxMessages = 10;
 @endphp
 
 <div id="chatbot-widget" class="fixed bottom-6 right-6 z-[9999] flex flex-col items-end">
@@ -18,6 +25,7 @@
                     <div class="flex items-center space-x-1">
                         <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                         <span class="text-[10px] text-indigo-100 uppercase tracking-wider font-semibold">Online</span>
+                        <span id="widgetMsgCounter" class="ml-2 text-[10px] bg-white/20 px-1.5 py-0.5 rounded-full font-bold {{ $userMessageCount >= $maxMessages ? 'bg-red-500/80 text-white' : '' }}">{{ $userMessageCount }}/{{ $maxMessages }}</span>
                     </div>
                 </div>
             </div>
@@ -37,7 +45,7 @@
 
         <!-- Messages Area -->
         <div id="widgetMessagesContainer" class="h-[400px] overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900 space-y-4">
-            @if(empty($messages))
+            @if($messages->isEmpty())
                 <div class="flex flex-col items-center justify-center h-full text-center space-y-3 opacity-60">
                     <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
@@ -46,18 +54,18 @@
                 </div>
             @else
                 @foreach($messages as $message)
-                    @if($message['sender_type'] === 'user')
+                    @if($message->sender_type === 'user')
                         <div class="flex justify-end">
                             <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-2 max-w-[85%] shadow-sm">
-                                <p class="text-sm leading-relaxed">{{ $message['message'] }}</p>
-                                <span class="text-[10px] text-indigo-200 mt-1 block text-right">{{ $message['timestamp'] }}</span>
+                                <p class="text-sm leading-relaxed">{{ $message->message }}</p>
+                                <span class="text-[10px] text-indigo-200 mt-1 block text-right">{{ $message->created_at->format('H:i') }}</span>
                             </div>
                         </div>
                     @else
                         <div class="flex justify-start">
                             <div class="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-2xl rounded-tl-none px-4 py-2 max-w-[85%] shadow-sm border border-gray-100 dark:border-gray-600">
-                                <p class="text-sm leading-relaxed whitespace-pre-wrap">{!! nl2br(e($message['message'])) !!}</p>
-                                <span class="text-[10px] text-gray-500 dark:text-gray-400 mt-1 block">{{ $message['timestamp'] }}</span>
+                                <p class="text-sm leading-relaxed whitespace-pre-wrap">{!! nl2br(e($message->message)) !!}</p>
+                                <span class="text-[10px] text-gray-500 dark:text-gray-400 mt-1 block">{{ $message->created_at->format('H:i') }}</span>
                             </div>
                         </div>
                     @endif
@@ -65,7 +73,28 @@
             @endif
         </div>
 
+        <!-- Helpdesk Ticket Link Banner -->
+        <div class="px-4 py-2 bg-indigo-50 dark:bg-indigo-950/30 border-t border-b border-indigo-100 dark:border-indigo-900/50 flex items-center justify-between">
+            <span class="text-xs text-indigo-700 dark:text-indigo-300 font-medium">Solusi tidak membantu?</span>
+            <a href="{{ route('tickets.create', ['analyze' => 1]) }}" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 flex items-center space-x-1 transition-colors" id="ai-ticket-link">
+                <span>✨ Buat Tiket Otomatis (AI)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
 
+
+
+        <!-- Limit Notification Banner -->
+        <div id="widgetLimitBanner" class="{{ $userMessageCount >= $maxMessages ? '' : 'hidden' }} px-4 py-3 bg-amber-50 dark:bg-amber-950/40 border-t border-amber-200 dark:border-amber-800">
+            <div class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                </svg>
+                <p class="text-xs font-medium text-amber-700 dark:text-amber-300">Anda telah mencapai batas <strong>{{ $maxMessages }} pesan</strong> untuk sesi ini. Hapus chat untuk memulai sesi baru.</p>
+            </div>
+        </div>
 
         <!-- Input -->
         <div class="p-4 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
@@ -73,11 +102,12 @@
                 <input 
                     type="text" 
                     id="widgetMessageInput" 
-                    class="flex-1 bg-gray-100 dark:bg-gray-700 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 dark:text-white" 
-                    placeholder="Tanya sesuatu..."
+                    class="flex-1 bg-gray-100 dark:bg-gray-700 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 dark:text-white {{ $userMessageCount >= $maxMessages ? 'opacity-50 cursor-not-allowed' : '' }}" 
+                    placeholder="{{ $userMessageCount >= $maxMessages ? 'Batas pesan tercapai' : 'Tanya sesuatu...' }}"
                     autocomplete="off"
+                    {{ $userMessageCount >= $maxMessages ? 'disabled' : '' }}
                 >
-                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-xl transition-all active:scale-95 shadow-lg shadow-indigo-500/30">
+                <button type="submit" id="widgetSubmitBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-xl transition-all active:scale-95 shadow-lg shadow-indigo-500/30 {{ $userMessageCount >= $maxMessages ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $userMessageCount >= $maxMessages ? 'disabled' : '' }}>
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-2.976 5.951 2.976a1 1 0 001.169-1.409l-7-14z"/>
                     </svg>
@@ -124,6 +154,28 @@
     const widgetForm = document.getElementById('widgetMessageForm');
     const widgetInput = document.getElementById('widgetMessageInput');
     const widgetMessages = document.getElementById('widgetMessagesContainer');
+    const widgetSubmitBtn = document.getElementById('widgetSubmitBtn');
+    const widgetLimitBanner = document.getElementById('widgetLimitBanner');
+    const widgetMsgCounter = document.getElementById('widgetMsgCounter');
+
+    let widgetUserMsgCount = {{ $userMessageCount }};
+    const widgetMaxMessages = {{ $maxMessages }};
+
+    function updateWidgetCounter() {
+        widgetMsgCounter.textContent = `${widgetUserMsgCount}/${widgetMaxMessages}`;
+        if (widgetUserMsgCount >= widgetMaxMessages) {
+            widgetMsgCounter.classList.add('bg-red-500/80', 'text-white');
+        }
+    }
+
+    function disableWidgetInput() {
+        widgetInput.disabled = true;
+        widgetInput.placeholder = 'Batas pesan tercapai';
+        widgetInput.classList.add('opacity-50', 'cursor-not-allowed');
+        widgetSubmitBtn.disabled = true;
+        widgetSubmitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        widgetLimitBanner.classList.remove('hidden');
+    }
 
     function toggleChat() {
         const isOpen = widgetWindow.classList.toggle('chat-window-active');
@@ -135,7 +187,9 @@
         
         if (isOpen) {
             scrollToWidgetBottom();
-            setTimeout(() => widgetInput.focus(), 300);
+            if (!widgetInput.disabled) {
+                setTimeout(() => widgetInput.focus(), 300);
+            }
         }
     }
 
@@ -152,6 +206,12 @@
         e.preventDefault();
         const message = widgetInput.value.trim();
         if (!message) return;
+
+        // Cek limit di frontend
+        if (widgetUserMsgCount >= widgetMaxMessages) {
+            disableWidgetInput();
+            return;
+        }
 
         // Add user message
         const userDiv = document.createElement('div');
@@ -193,9 +253,25 @@
             });
 
             const data = await response.json();
-            document.getElementById('widgetTyping').remove();
+            const typingEl = document.getElementById('widgetTyping');
+            if (typingEl) typingEl.remove();
+
+            // Handle limit reached (429)
+            if (response.status === 429 || data.limit_reached) {
+                // Hapus pesan user yang baru ditambahkan (karena ditolak server)
+                userDiv.remove();
+                widgetUserMsgCount = data.user_message_count || widgetMaxMessages;
+                updateWidgetCounter();
+                disableWidgetInput();
+                return;
+            }
 
             if (data.success) {
+                // Update counter
+                widgetUserMsgCount = data.user_message_count;
+                updateWidgetCounter();
+
+                // Add bot response
                 const botDiv = document.createElement('div');
                 botDiv.className = 'flex justify-start';
                 const formatted = data.bot_message.message.replace(/\n/g, '<br>');
@@ -207,14 +283,24 @@
                 `;
                 widgetMessages.appendChild(botDiv);
                 scrollToWidgetBottom();
+
+                // Cek apakah sudah capai limit setelah kirim
+                if (widgetUserMsgCount >= widgetMaxMessages) {
+                    disableWidgetInput();
+                }
             }
         } catch (error) {
-            document.getElementById('widgetTyping').remove();
+            const typingEl = document.getElementById('widgetTyping');
+            if (typingEl) typingEl.remove();
             console.error(error);
         }
     });
 
     function sendQuickWidgetMessage(msg) {
+        if (widgetUserMsgCount >= widgetMaxMessages) {
+            disableWidgetInput();
+            return;
+        }
         widgetInput.value = msg;
         widgetForm.dispatchEvent(new Event('submit'));
     }

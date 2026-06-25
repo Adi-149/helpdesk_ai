@@ -23,7 +23,7 @@
         @endif
 
         <!-- Admin Summary -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white shadow-lg">
                 <div class="flex items-end justify-between">
                     <div>
@@ -51,6 +51,102 @@
                         <p class="text-4xl font-bold">{{ $supportStaff->count() }}</p>
                     </div>
                     <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8C18 5.24 15.76 3 13 3H11C8.24 3 6 5.24 6 8V12C6 14.76 8.24 17 11 17H12V20C12 21.1 11.1 22 10 22C8.9 22 8 21.1 8 20V18H16V20C16 21.1 15.1 22 14 22C12.9 22 12 21.1 12 20V17H13C15.76 17 18 14.76 18 12V8Z"/></svg>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-lg p-6 text-white shadow-lg cursor-pointer" onclick="window.location.href='{{ route('tickets.index') }}'">
+                <div class="flex items-end justify-between">
+                    <div>
+                        <p class="text-red-100 text-sm font-medium">Total Tiket</p>
+                        <p class="text-4xl font-bold">{{ $totalTickets }}</p>
+                    </div>
+                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 012-2h6a2 2 0 012 2v6h4a2 2 0 012 2v5a2 2 0 01-2 2H3a2 2 0 01-2-2v-5a2 2 0 012-2h4V3z"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistik & Laporan (test.md) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <!-- Status Breakdown -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 border border-gray-100 dark:border-gray-700/50">
+                <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-1.5">
+                    <span class="w-1.5 h-4 bg-emerald-500 rounded"></span> Statistik Status
+                </h3>
+                <div class="space-y-3.5">
+                    @foreach($statusCounts as $statusName => $count)
+                        @php
+                            $percentages = $totalTickets > 0 ? round(($count / $totalTickets) * 100) : 0;
+                            $labels = ['open' => 'Dibuka', 'progress' => 'Diproses', 'resolved' => 'Diselesaikan', 'closed' => 'Ditutup'];
+                            $colors = ['open' => 'emerald', 'progress' => 'amber', 'resolved' => 'sky', 'closed' => 'slate'];
+                            $lbl = $labels[$statusName] ?? $statusName;
+                            $color = $colors[$statusName] ?? 'gray';
+                        @endphp
+                        <div>
+                            <div class="flex items-center justify-between mb-1 text-xs">
+                                <span class="font-semibold text-gray-700 dark:text-gray-300">{{ $lbl }}</span>
+                                <span class="font-extrabold text-gray-900 dark:text-white">{{ $count }} <span class="text-gray-400 font-normal">({{ $percentages }}%)</span></span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-{{ $color }}-500 h-2 rounded-full transition-all duration-500" style="width: {{ $percentages }}%"></div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Priority Breakdown -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 border border-gray-100 dark:border-gray-700/50">
+                <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-1.5">
+                    <span class="w-1.5 h-4 bg-red-500 rounded"></span> Statistik Prioritas
+                </h3>
+                <div class="space-y-3.5">
+                    @foreach($priorityCounts as $priorityName => $count)
+                        @php
+                            $percentages = $totalTickets > 0 ? round(($count / $totalTickets) * 100) : 0;
+                            $labels = ['high' => 'Prioritas Tinggi', 'medium' => 'Prioritas Sedang', 'low' => 'Prioritas Rendah'];
+                            $colors = ['high' => 'red', 'medium' => 'orange', 'low' => 'green'];
+                            $lbl = $labels[$priorityName] ?? $priorityName;
+                            $color = $colors[$priorityName] ?? 'gray';
+                        @endphp
+                        <div>
+                            <div class="flex items-center justify-between mb-1 text-xs">
+                                <span class="font-semibold text-gray-700 dark:text-gray-300">{{ $lbl }}</span>
+                                <span class="font-extrabold text-gray-900 dark:text-white">{{ $count }} <span class="text-gray-400 font-normal">({{ $percentages }}%)</span></span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-{{ $color }}-500 h-2 rounded-full transition-all duration-500" style="width: {{ $percentages }}%"></div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Category & Reports Box -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 border border-gray-100 dark:border-gray-700/50 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-1.5">
+                        <span class="w-1.5 h-4 bg-indigo-500 rounded"></span> Top Kategori
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        @foreach($categoryCounts as $catName => $count)
+                            @php
+                                $percentages = $totalTickets > 0 ? round(($count / $totalTickets) * 100) : 0;
+                            @endphp
+                            <div class="flex items-center justify-between py-1 border-b border-gray-50 dark:border-gray-700">
+                                <span class="text-gray-600 dark:text-gray-400">{{ $catName }}</span>
+                                <span class="font-bold text-gray-800 dark:text-gray-200">{{ $count }} tiket ({{ $percentages }}%)</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
+                    <a href="{{ route('admin.reports') }}" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white text-sm font-bold rounded-lg shadow transition-all duration-200 hover:scale-[1.01] active:scale-95">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Lihat Laporan Lengkap
+                    </a>
                 </div>
             </div>
         </div>

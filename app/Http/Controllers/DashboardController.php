@@ -26,10 +26,18 @@ class DashboardController extends Controller
             'medium' => Ticket::where('priority', 'medium')->count(),
             'low' => Ticket::where('priority', 'low')->count(),
         ];
+
+        // Tickets by category
+        $ticketsByCategory = [
+            'Hardware' => Ticket::where('category', 'Hardware')->count(),
+            'Software' => Ticket::where('category', 'Software')->count(),
+            'Jaringan' => Ticket::where('category', 'Jaringan')->count(),
+            'Akun' => Ticket::where('category', 'Akun')->count(),
+            'Lainnya' => Ticket::where('category', 'Lainnya')->count(),
+        ];
         
-        // Assigned vs Unassigned
-        $assignedTickets = Ticket::whereNotNull('assigned_to')->count();
-        $unassignedTickets = Ticket::whereNull('assigned_to')->count();
+        // Belum Ditangani = status open & assigned_to null
+        $unassignedTickets = Ticket::where('status', 'open')->whereNull('assigned_to')->count();
         
         // Recent tickets
         $recentTickets = Ticket::latest()->take(5)->get();
@@ -38,7 +46,7 @@ class DashboardController extends Controller
             'totalTickets',
             'ticketsByStatus',
             'ticketsByPriority',
-            'assignedTickets',
+            'ticketsByCategory',
             'unassignedTickets',
             'recentTickets'
         ));

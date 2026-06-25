@@ -18,7 +18,7 @@
         <div class="bg-white shadow-sm rounded-lg p-6">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-medium text-gray-900">Daftar Tiket</h3>
-                <a href="{{ route('tickets.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">+ Buat Tiket</a>
+                <!-- Create Ticket button removed for support view -->
             </div>
             
             <div class="overflow-x-auto">
@@ -52,7 +52,7 @@
                             <td class="px-4 py-3 text-right space-x-2 flex justify-end">
                                 <a href="{{ route('tickets.show', $ticket->id) }}" class="inline-flex items-center px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 text-xs">Lihat</a>
                                 @if(!$ticket->assigned_to)
-                                    <a href="{{ route('tickets.assign.form', $ticket->id) }}" class="inline-flex items-center px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-xs">Assign</a>
+                                    <a href="{{ route('tickets.assign.form', $ticket->id) }}" class="inline-flex items-center px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-xs">Ambil</a>
                                 @endif
                             </td>
                         </tr>

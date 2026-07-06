@@ -1,0 +1,293 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="920" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ========== LIFELINE HEADERS (kotak putih) ========== -->
+    <mxCell id="h_ui" value="user interface" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="h_ac" value="admin controller" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="320" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="h_rc" value="report controller" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="560" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="h_db" value="database" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="800" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- ========== LIFELINE DASHED LINES ========== -->
+    <mxCell id="l_ui" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="60" as="sourcePoint" />
+        <mxPoint x="145" y="820" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="l_ac" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="60" as="sourcePoint" />
+        <mxPoint x="385" y="820" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="l_rc" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="625" y="60" as="sourcePoint" />
+        <mxPoint x="625" y="820" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="l_db" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="60" as="sourcePoint" />
+        <mxPoint x="865" y="820" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ========== TITIK AWAL ========== -->
+    <mxCell id="dot_start" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="137" y="75" width="16" height="16" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 1 : LIHAT DASHBOARD & KELOLA PENGGUNA               -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl1" value="1. Kelola Pengguna (Admin Dashboard)" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="100" width="250" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> ac: GET /admin/dashboard -->
+    <mxCell id="a1" value="buka halaman dashboard admin" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="112" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="130" as="sourcePoint" />
+        <mxPoint x="385" y="130" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ac -> db: query users & tickets stats -->
+    <mxCell id="a2" value="ambil data users &amp; statistik tiket" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="140" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="158" as="sourcePoint" />
+        <mxPoint x="865" y="158" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- db -> ac: return data -->
+    <mxCell id="a3" value="kembalikan data users &amp; hitungan status" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="168" width="220" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a3a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="186" as="sourcePoint" />
+        <mxPoint x="385" y="186" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ac -> ui: render view -->
+    <mxCell id="a4" value="tampilkan dashboard &amp; daftar pengguna" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="165" y="196" width="200" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a4a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="214" as="sourcePoint" />
+        <mxPoint x="145" y="214" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 2 : UPDATE ROLE PENGGUNA                           -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl2" value="2. Update Role Pengguna" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="244" width="220" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> ac: POST /admin/users/{user}/role -->
+    <mxCell id="b1" value="kirim perubahan role pengguna" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="256" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="274" as="sourcePoint" />
+        <mxPoint x="385" y="274" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ac -> db: update role -->
+    <mxCell id="b2" value="update role pada tabel users" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="284" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="302" as="sourcePoint" />
+        <mxPoint x="865" y="302" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- db -> ac: success response -->
+    <mxCell id="b3" value="konfirmasi data berhasil diupdate" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="312" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b3a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="330" as="sourcePoint" />
+        <mxPoint x="385" y="330" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ac -> ui: redirect dashboard -->
+    <mxCell id="b4" value="redirect ke dashboard &amp; alert sukses" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="340" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b4a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="358" as="sourcePoint" />
+        <mxPoint x="145" y="358" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 3 : HAPUS PENGGUNA                                 -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl3" value="3. Hapus Pengguna (Proteksi Diri Sendiri)" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="388" width="250" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> ac: DELETE /admin/users/{user} -->
+    <mxCell id="c1" value="klik tombol hapus pengguna" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="400" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="418" as="sourcePoint" />
+        <mxPoint x="385" y="418" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ac: self-loop check (user_id !== auth_id) -->
+    <mxCell id="c2" value="cek user_id != auth_id (tidak bisa hapus diri sendiri)" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=left;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="395" y="432" width="240" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="428" as="sourcePoint" />
+        <mxPoint x="385" y="452" as="targetPoint" />
+        <Array as="points">
+          <mxPoint x="420" y="428" />
+          <mxPoint x="420" y="452" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ac -> db: delete user -->
+    <mxCell id="c3" value="hapus data user di database" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="466" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c3a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="484" as="sourcePoint" />
+        <mxPoint x="865" y="484" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- db -> ac: confirm delete -->
+    <mxCell id="c4" value="konfirmasi data berhasil dihapus" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="494" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c4a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="512" as="sourcePoint" />
+        <mxPoint x="385" y="512" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ac -> ui: redirect dashboard -->
+    <mxCell id="c5" value="redirect ke dashboard &amp; alert sukses" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="522" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c5a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="540" as="sourcePoint" />
+        <mxPoint x="145" y="540" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 4 : LIHAT LAPORAN & STATISTIK                       -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl4" value="4. Lihat Laporan &amp; Statistik Tiket" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="570" width="220" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> rc: GET /admin/reports -->
+    <mxCell id="d1" value="buka halaman laporan IT helpdesk" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="270" y="582" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="600" as="sourcePoint" />
+        <mxPoint x="625" y="600" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- rc -> db: query tren, performa teknisi, kategori -->
+    <mxCell id="d2" value="ambil statistik tren bulanan &amp; performa" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="640" y="610" width="210" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="625" y="628" as="sourcePoint" />
+        <mxPoint x="865" y="628" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- db -> rc: return data -->
+    <mxCell id="d3" value="kembalikan tren 6 bulan &amp; data resolve rate" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="635" y="638" width="220" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d3a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="656" as="sourcePoint" />
+        <mxPoint x="625" y="656" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- rc -> ui: render view with charts -->
+    <mxCell id="d4" value="tampilkan grafik tren &amp; tabel performa teknisi" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="250" y="666" width="220" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d4a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="625" y="684" as="sourcePoint" />
+        <mxPoint x="145" y="684" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ========== TITIK AKHIR ========== -->
+    <mxCell id="dot_end" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="137" y="710" width="16" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="dot_end2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;strokeWidth=4;" vertex="1" parent="1">
+      <mxGeometry x="132" y="728" width="26" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- ========== FOOTER HEADERS (kotak putih) ========== -->
+    <mxCell id="hf_ui" value="user interface" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="770" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="hf_ac" value="admin controller" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="320" y="770" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="hf_rc" value="report controller" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="560" y="770" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="hf_db" value="database" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="800" y="770" width="130" height="30" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

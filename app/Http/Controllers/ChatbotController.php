@@ -238,7 +238,8 @@ class ChatbotController extends Controller
                 . "Tugas UTAMA Anda adalah HANYA membantu pengguna dengan pertanyaan atau masalah seputar TEKNOLOGI (seperti komputer, jaringan, software, hardware, internet, programming, dan troubleshooting IT). "
                 . "JIKA pengguna bertanya di luar topik teknologi (misalnya: resep makanan, politik, hiburan, olahraga, kehidupan sehari-hari, dll), TOLAK dengan sopan dan jelaskan bahwa Anda hanya dapat membantu seputar masalah teknologi atau IT Helpdesk. "
                 . "Berikan jawaban yang akurat dan solutif. PENTING: Jawablah dengan SINGKAT, PADAT, dan LANGSUNG KE INTINYA (to-the-point). Jangan bertele-tele. "
-                . "PENTING: Jangan gunakan format Markdown apa pun (jangan gunakan simbol seperti ***, ###, atau ---). Jawab dengan teks biasa (plain text) saja.";
+                . "PENTING: Jangan gunakan format Markdown apa pun (jangan gunakan simbol seperti ***, ###, atau ---). Jawab dengan teks biasa (plain text) saja."
+                . " PENTING: Jika percakapan sudah di penghujung chat tetapi masalah pengguna masih belum terselesaikan atau tidak bisa diselesaikan, Anda harus menyarankan pengguna agar membuat tiket bantuan di aplikasi ini atau menghubungi nomor teknisi di \"089688267122\".";
             
             // Build conversation history from database
             // Ambil semua pesan dalam sesi secara kronologis (ASC) agar AI ingat konteks
@@ -361,7 +362,7 @@ class ChatbotController extends Controller
         }
 
         // Default: generic helpful response when AI fails
-        return "Maaf, sepertinya saya sedang mengalami gangguan koneksi ke server AI utama. Silakan coba tanyakan lagi dalam beberapa saat, atau hubungi tim support jika mendesak.";
+        return "Maaf, sepertinya saya sedang mengalami gangguan koneksi ke server AI utama. Silakan coba tanyakan lagi dalam beberapa saat. Jika kendala Anda mendesak dan tidak bisa diselesaikan, Anda dapat membuat tiket bantuan di aplikasi ini atau menghubungi nomor teknisi kami di 089688267122.";
     }
 
     /**

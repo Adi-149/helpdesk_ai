@@ -1,0 +1,117 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Outer Screen Container -->
+    <mxCell id="outer_screen" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="520" as="geometry" />
+    </mxCell>
+
+    <!-- Navigation Header -->
+    <mxCell id="nav_header" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Nav Items -->
+    <mxCell id="nav_logo" value="Logo Helpdesk" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="60" width="100" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="nav_dashboard" value="Dasbor" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="190" y="60" width="60" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="nav_tickets" value="Tiket" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="270" y="60" width="60" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="nav_profile" value="Profil" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="620" y="60" width="60" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Page Title -->
+    <mxCell id="page_title" value="Kelola Pengguna" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=1;fontSize=12;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="105" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Top Cards (Grid Stats) -->
+    <mxCell id="card_total_users" value="Total Pengguna" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="70" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="card_regular_users" value="Pengguna Biasa" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="230" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="card_support" value="Staff Support" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="390" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="card_total_tickets" value="Total Tiket" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="550" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Panel 1: Statistik Status -->
+    <mxCell id="panel_status" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
+      <mxGeometry x="70" y="200" width="200" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="lbl_status" value="Statistik Status" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=1;fontSize=9;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="205" width="100" height="15" as="geometry" />
+    </mxCell>
+    <mxCell id="status_open" value="Dibuka" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="80" y="222" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="status_progress" value="Diproses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="80" y="242" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="status_resolved" value="Diselesaikan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="80" y="262" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="status_closed" value="Ditutup" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="80" y="282" width="180" height="16" as="geometry" />
+    </mxCell>
+
+    <!-- Panel 2: Statistik Prioritas -->
+    <mxCell id="panel_priority" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
+      <mxGeometry x="290" y="200" width="200" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="lbl_priority" value="Statistik Prioritas" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=1;fontSize=9;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="300" y="205" width="100" height="15" as="geometry" />
+    </mxCell>
+    <mxCell id="priority_high" value="Prioritas Tinggi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="300" y="222" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="priority_medium" value="Prioritas Sedang" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="300" y="242" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="priority_low" value="Prioritas Rendah" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="300" y="262" width="180" height="16" as="geometry" />
+    </mxCell>
+
+    <!-- Panel 3: Top Kategori -->
+    <mxCell id="panel_category" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
+      <mxGeometry x="510" y="200" width="200" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="lbl_category" value="Top Kategori" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=1;fontSize=9;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="520" y="205" width="100" height="15" as="geometry" />
+    </mxCell>
+    <mxCell id="category_hardware" value="Hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="520" y="222" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="category_software" value="Software" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="520" y="242" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="category_network" value="Jaringan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="520" y="262" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="category_other" value="Lainnya" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=8;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="520" y="282" width="180" height="16" as="geometry" />
+    </mxCell>
+
+    <!-- Table 1: Pengguna Biasa -->
+    <mxCell id="table_users" value="Tabel Pengguna Biasa (Nama, Email, Role, Aksi)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="335" width="640" height="90" as="geometry" />
+    </mxCell>
+
+    <!-- Table 2: Staff Support -->
+    <mxCell id="table_staff" value="Tabel Staff Support / Teknisi (Nama, Email, Role, Aksi)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="440" width="640" height="90" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

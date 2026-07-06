@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Gambar 3.7 Sequence Diagram User</title>
+    <style>
+        body {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+        h2 { margin-bottom: 20px; color: #333; }
+        .mermaid { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <h2>Gambar 3.7 Sequence Diagram User</h2>
+    <div class="mermaid">
+    sequenceDiagram
+        actor U as User
+        participant B as Browser / View
+        participant AC as AuthController
+        participant TC as TicketController
+        participant CC as ChatbotController
+        participant DB as Database
+        participant API as OpenRouter API
+
+        Note over U,API: Proses Login
+        U->>B: Mengakses halaman login
+        B->>AC: POST /login (email, password)
+        AC->>DB: SELECT * FROM users WHERE email=?
+        DB-->>AC: Data user
+        AC->>AC: Verifikasi password
+        AC-->>B: Redirect ke Dashboard User
+        B-->>U: Menampilkan Dashboard User
+
+        Note over U,API: Proses Membuat Tiket
+        U->>B: Mengakses halaman Buat Tiket
+        B-->>U: Menampilkan form tiket
+        U->>B: Mengisi subject, description, category
+        B->>TC: POST /tickets (subject, description, category)
+        TC->>DB: INSERT INTO tickets (subject, desc, category, priority='low', status='open')
+        DB-->>TC: Tiket tersimpan (ID)
+        TC-->>B: Redirect ke halaman daftar tiket
+        B-->>U: Menampilkan pesan sukses & daftar tiket
+
+        Note over U,API: Proses Chat dengan Chatbot AI
+        U->>B: Mengakses halaman Chatbot
+        B->>CC: GET /chatbot
+        CC->>DB: SELECT * FROM chatbot_conversations WHERE user_id=? AND status='active'
+        DB-->>CC: Sesi percakapan aktif / buat baru
+        CC-->>B: Menampilkan halaman chatbot
+        B-->>U: Menampilkan antarmuka chat
+
+        U->>B: Mengirim pesan chat
+        B->>CC: POST /chatbot/send (message)
+        CC->>DB: INSERT INTO chat_messages (message, sender_type='user')
+        CC->>API: POST /chat/completions (model: gpt-4o-mini, messages[])
+        API-->>CC: Respon AI (jawaban)
+        CC->>DB: UPDATE chat_messages SET response=jawaban
+        CC-->>B: Return JSON respon
+        B-->>U: Menampilkan jawaban AI di chat
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            sequence: {
+                actorMargin: 60,
+                noteMargin: 10,
+                messageMargin: 40,
+                mirrorActors: false,
+                width: 180,
+                height: 40,
+                boxMargin: 10,
+                useMaxWidth: false
+            }
+        });
+    </script>
+</body>
+</html>

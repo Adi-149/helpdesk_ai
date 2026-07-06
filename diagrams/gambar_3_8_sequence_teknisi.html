@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Gambar 3.8 Sequence Diagram Teknisi</title>
+    <style>
+        body {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+        h2 { margin-bottom: 20px; color: #333; }
+        .mermaid { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <h2>Gambar 3.8 Sequence Diagram Teknisi</h2>
+    <div class="mermaid">
+    sequenceDiagram
+        actor T as Teknisi / Support
+        participant B as Browser / View
+        participant AC as AuthController
+        participant TC as TicketController
+        participant DB_U as Database (users)
+        participant DB_T as Database (tickets)
+        participant DB_H as Database (ticket_histories)
+
+        Note over T,DB_H: Proses Login Teknisi
+        T->>B: Mengakses halaman login
+        B->>AC: POST /login (email, password)
+        AC->>DB_U: SELECT * FROM users WHERE email=?
+        DB_U-->>AC: Data user (role='support')
+        AC-->>B: Redirect ke Dashboard Support
+        B-->>T: Menampilkan Dashboard Support (statistik tiket)
+
+        Note over T,DB_H: Melihat Daftar Tiket
+        T->>B: Mengakses halaman Daftar Tiket
+        B->>TC: GET /support/tickets
+        TC->>DB_T: SELECT * FROM tickets ORDER BY created_at DESC
+        DB_T-->>TC: Daftar seluruh tiket
+        TC-->>B: Return view daftar tiket
+        B-->>T: Menampilkan daftar tiket
+
+        Note over T,DB_H: Melihat Detail dan Self-Assign Tiket
+        T->>B: Memilih tiket untuk dilihat detail
+        B->>TC: GET /tickets/{id}
+        TC->>DB_T: SELECT * FROM tickets WHERE id=? (termasuk kolom AI)
+        DB_T-->>TC: Data tiket + ai_summary, ai_causes, ai_recommendations
+        TC-->>B: Return view detail tiket
+        B-->>T: Menampilkan detail tiket + analisis AI + kasus serupa
+
+        T->>B: Klik tombol Self-Assign
+        B->>TC: POST /tickets/{id}/assign (assigned_to=self)
+        TC->>DB_T: UPDATE tickets SET assigned_to=teknisi_id, status='progress'
+        DB_T-->>TC: Berhasil
+        TC->>DB_H: INSERT INTO ticket_histories (old_status, new_status='progress')
+        DB_H-->>TC: Riwayat tersimpan
+        TC-->>B: Redirect kembali ke detail tiket
+        B-->>T: Menampilkan tiket dengan status 'progress'
+
+        Note over T,DB_H: Update Status & Prioritas Tiket
+        T->>B: Mengubah status/prioritas tiket
+        B->>TC: PUT /tickets/{id}/status (status, priority, notes)
+        TC->>DB_T: UPDATE tickets SET status=?, priority=?
+        DB_T-->>TC: Berhasil
+        TC->>DB_H: INSERT INTO ticket_histories (old_status, new_status, notes)
+        DB_H-->>TC: Riwayat perubahan tersimpan
+        TC-->>B: Redirect dengan pesan sukses
+        B-->>T: Menampilkan konfirmasi perubahan
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            sequence: {
+                actorMargin: 50,
+                noteMargin: 10,
+                messageMargin: 35,
+                mirrorActors: false,
+                width: 160,
+                height: 40,
+                boxMargin: 10,
+                useMaxWidth: false
+            }
+        });
+    </script>
+</body>
+</html>

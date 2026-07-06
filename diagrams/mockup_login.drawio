@@ -1,0 +1,52 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Outer Container (Main Screen Window) -->
+    <mxCell id="outer_screen" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="420" as="geometry" />
+    </mxCell>
+
+    <!-- Logo / Application Header -->
+    <mxCell id="logo_placeholder" value="Logo Helpdesk" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=16;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="250" y="80" width="300" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Central Login Card -->
+    <mxCell id="login_card" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="200" y="130" width="400" height="270" as="geometry" />
+    </mxCell>
+
+    <!-- Username/Email Label -->
+    <mxCell id="username_lbl" value="Username" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="230" y="160" width="100" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Username/Email Input Field -->
+    <mxCell id="username_input" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="230" y="180" width="340" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Password Label -->
+    <mxCell id="password_lbl" value="Password" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="230" y="230" width="100" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Password Input Field -->
+    <mxCell id="password_input" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="230" y="250" width="340" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Daftar Akun Link -->
+    <mxCell id="daftar_akun_link" value="Daftar akun" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="230" y="325" width="100" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Masuk Button -->
+    <mxCell id="masuk_btn" value="Masuk" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontStyle=0;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="470" y="315" width="100" height="40" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

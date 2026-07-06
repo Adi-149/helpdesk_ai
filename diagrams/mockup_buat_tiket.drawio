@@ -1,0 +1,67 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Outer Screen Container -->
+    <mxCell id="outer_screen" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="470" as="geometry" />
+    </mxCell>
+
+    <!-- Judul Masalah Label -->
+    <mxCell id="subject_lbl" value="Judul Masalah" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="75" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Judul Masalah Input Field -->
+    <mxCell id="subject_input" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="95" width="640" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- Deskripsi Label -->
+    <mxCell id="description_lbl" value="Deskripsi" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="145" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Deskripsi Text Area -->
+    <mxCell id="description_input" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="165" width="640" height="150" as="geometry" />
+    </mxCell>
+
+    <!-- Kategori Kerusakan Label -->
+    <mxCell id="category_lbl" value="Kategori Kerusakan" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="330" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Kategori Kerusakan Select Dropdown -->
+    <mxCell id="category_select" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="350" width="640" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- Kategori Dropdown Icon (Down Triangle) -->
+    <mxCell id="category_arrow" value="" style="triangle;direction=south;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="690" y="363" width="14" height="9" as="geometry" />
+    </mxCell>
+
+    <!-- Prioritas Tiket Label -->
+    <mxCell id="priority_lbl" value="Prioritas Tiket" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="400" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Prioritas Tiket Select Dropdown -->
+    <mxCell id="priority_select" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="420" width="640" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- Prioritas Dropdown Icon (Down Triangle) -->
+    <mxCell id="priority_arrow" value="" style="triangle;direction=south;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="690" y="433" width="14" height="9" as="geometry" />
+    </mxCell>
+
+    <!-- Kirim Button -->
+    <mxCell id="kirim_btn" value="Kirim" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontStyle=0;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="620" y="470" width="100" height="35" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

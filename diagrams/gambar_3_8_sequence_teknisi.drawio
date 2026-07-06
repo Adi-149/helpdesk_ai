@@ -1,0 +1,322 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1000" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ========== LIFELINE HEADERS (kotak putih) ========== -->
+    <mxCell id="h_ui" value="user interface" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="h_tc" value="tiket controller" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="320" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="h_db" value="database" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="560" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="h_api" value="openrouter api" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="800" y="30" width="130" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- ========== LIFELINE DASHED LINES ========== -->
+    <mxCell id="l_ui" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="60" as="sourcePoint" />
+        <mxPoint x="145" y="900" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="l_tc" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="60" as="sourcePoint" />
+        <mxPoint x="385" y="900" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="l_db" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="625" y="60" as="sourcePoint" />
+        <mxPoint x="625" y="900" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="l_api" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="60" as="sourcePoint" />
+        <mxPoint x="865" y="900" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ========== TITIK AWAL ========== -->
+    <mxCell id="dot_start" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="137" y="75" width="16" height="16" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 1 : LIHAT DAFTAR TIKET                             -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl1" value="1. Lihat Daftar Tiket Gangguan" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="100" width="220" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> tc: GET /support/tickets -->
+    <mxCell id="a1" value="buka halaman dashboard support" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="112" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="130" as="sourcePoint" />
+        <mxPoint x="385" y="130" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> db: query list tiket -->
+    <mxCell id="a2" value="ambil semua tiket (tickets table)" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="140" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="158" as="sourcePoint" />
+        <mxPoint x="625" y="158" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- db -> tc: return tiket list -->
+    <mxCell id="a3" value="data tiket dengan relasi user" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="168" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a3a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="625" y="186" as="sourcePoint" />
+        <mxPoint x="385" y="186" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> ui: tampilkan list -->
+    <mxCell id="a4" value="tampilkan daftar tiket &amp; filter" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="196" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="a4a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="214" as="sourcePoint" />
+        <mxPoint x="145" y="214" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 2 : KLAIM TIKET (ASSIGN TO ME)                     -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl2" value="2. Klaim Tiket (Assign to Self)" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="244" width="220" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> tc: POST /tickets/{id}/assign -->
+    <mxCell id="b1" value="klik tugaskan ke saya" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="256" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="274" as="sourcePoint" />
+        <mxPoint x="385" y="274" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> db: update assigned_to = support_id, status = progress -->
+    <mxCell id="b2" value="update status='progress', assigned_to=auth_id" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="405" y="284" width="210" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="302" as="sourcePoint" />
+        <mxPoint x="625" y="302" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> db: kirim TicketAssignedNotification ke user pembuat -->
+    <mxCell id="b3" value="kirim TicketAssignedNotification ke user" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="405" y="312" width="210" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b3a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="330" as="sourcePoint" />
+        <mxPoint x="625" y="330" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- db -> tc: return success -->
+    <mxCell id="b4" value="konfirmasi update sukses" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="340" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b4a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="625" y="358" as="sourcePoint" />
+        <mxPoint x="385" y="358" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> ui: redirect detail dengan sukses -->
+    <mxCell id="b5" value="redirect ke detail tiket &amp; alert sukses" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="175" y="368" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="b5a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="386" as="sourcePoint" />
+        <mxPoint x="145" y="386" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 3 : LIHAT DETAIL TIKET & REKOMENDASI AI            -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl3" value="3. Lihat Detail &amp; Analisis Tiket Serupa (AI)" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="416" width="250" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> tc: GET /tickets/{id} -->
+    <mxCell id="c1" value="klik judul/detail tiket" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="185" y="428" width="160" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="446" as="sourcePoint" />
+        <mxPoint x="385" y="446" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> db: load detail, histories, messages -->
+    <mxCell id="c2" value="load data tiket, histories, messages" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="410" y="456" width="190" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="474" as="sourcePoint" />
+        <mxPoint x="625" y="474" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> api: findSimilarTickets (AI search) -->
+    <mxCell id="c3" value="kirim data tiket untuk cari kesamaan" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="500" y="484" width="200" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c3a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="502" as="sourcePoint" />
+        <mxPoint x="865" y="502" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- api -> tc: return max 3 similar tickets -->
+    <mxCell id="c4" value="kembalikan maks 3 tiket serupa" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="510" y="512" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c4a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="530" as="sourcePoint" />
+        <mxPoint x="385" y="530" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> ui: render view -->
+    <mxCell id="c5" value="tampilkan detail + rekomendasi AI &amp; tiket serupa" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="155" y="540" width="220" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="c5a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="558" as="sourcePoint" />
+        <mxPoint x="145" y="558" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  SKENARIO 4 : UPDATE STATUS & RINGKASAN SOLUSI (AI)          -->
+    <!-- ============================================================ -->
+    <mxCell id="lbl4" value="4. Update Status &amp; Ringkasan Resolusi AI" style="text;html=1;fontStyle=1;fontSize=10;strokeColor=none;fillColor=none;align=left;" vertex="1" parent="1">
+      <mxGeometry x="75" y="588" width="250" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ui -> tc: PUT /tickets/{id} -->
+    <mxCell id="d1" value="kirim form update (status='resolved/closed', notes)" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="155" y="600" width="220" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d1a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="145" y="618" as="sourcePoint" />
+        <mxPoint x="385" y="618" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> api: generateResolutionSummary -->
+    <mxCell id="d2" value="generateResolutionSummary(notes)" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="500" y="628" width="200" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d2a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="646" as="sourcePoint" />
+        <mxPoint x="865" y="646" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- api -> tc: return resolution summary -->
+    <mxCell id="d3" value="kembalikan ringkasan penyelesaian" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="510" y="656" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d3a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="865" y="674" as="sourcePoint" />
+        <mxPoint x="385" y="674" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> db: simpan update, history, status updated notify -->
+    <mxCell id="d4" value="simpan updates, histories, &amp; kirim notifikasi user" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="400" y="684" width="220" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d4a" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="702" as="sourcePoint" />
+        <mxPoint x="625" y="702" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- db -> tc: return success -->
+    <mxCell id="d5" value="konfirmasi penyimpanan sukses" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="415" y="712" width="180" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d5a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="625" y="730" as="sourcePoint" />
+        <mxPoint x="385" y="730" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- tc -> ui: redirect show -->
+    <mxCell id="d6" value="tampilkan detail tiket terupdate &amp; notifikasi" style="text;html=1;fontSize=9;strokeColor=none;fillColor=none;align=center;" vertex="1" connectable="0" parent="1">
+      <mxGeometry x="155" y="740" width="220" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="d6a" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="385" y="758" as="sourcePoint" />
+        <mxPoint x="145" y="758" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ========== TITIK AKHIR ========== -->
+    <mxCell id="dot_end" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="137" y="790" width="16" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="dot_end2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;strokeWidth=4;" vertex="1" parent="1">
+      <mxGeometry x="132" y="808" width="26" height="26" as="geometry" />
+    </mxCell>
+
+    <!-- ========== FOOTER HEADERS (kotak putih) ========== -->
+    <mxCell id="hf_ui" value="user interface" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="850" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="hf_tc" value="tiket controller" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="320" y="850" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="hf_db" value="database" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="560" y="850" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="hf_api" value="openrouter api" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="800" y="850" width="130" height="30" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

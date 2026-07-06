@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Use Case Diagram - Sistem Helpdesk Chatbot AI</title>
+    <style>
+        body {
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 24px;
+        }
+        .mermaid {
+            width: 100%;
+            max-width: 850px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Gambar 3.2 Use Case Diagram Sistem Helpdesk Chatbot AI</h2>
+
+<div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '13px', 'primaryColor': '#ffffff', 'primaryBorderColor': '#1565c0', 'lineColor': '#444'}}}%%
+graph LR
+
+    %% === ACTORS ===
+    User(["👤 User"])
+    Teknisi(["👤 Teknisi"])
+    Admin(["👤 Admin"])
+    AI(["🤖 OpenRouter\nAPI"])
+
+    %% === SYSTEM BOUNDARY ===
+    subgraph SYS ["  Sistem Helpdesk Chatbot AI  "]
+
+        %% Shared
+        UC_LOGIN(["Login"])
+
+        %% User use cases
+        UC_CHAT(["Konsultasi Chatbot AI"])
+        UC_TICKET(["Membuat Tiket"])
+        UC_HISTORY(["Melihat Riwayat Tiket"])
+        UC_CLOSE(["Menutup / Membuka Kembali Tiket"])
+
+        %% Teknisi use cases
+        UC_TICKETLIST(["Melihat Daftar Tiket"])
+        UC_ASSIGN(["Self-Assign Tiket"])
+        UC_UPDATE(["Update Status & Prioritas Tiket"])
+        UC_DISCUSS(["Berdiskusi di Tiket"])
+
+        %% Admin exclusive use cases
+        UC_DASHBOARD(["Lihat Dashboard & Laporan"])
+        UC_USERS(["Kelola Pengguna"])
+
+        %% AI Include use cases
+        UC_AI1(["Hasilkan Respons\nChat AI"])
+        UC_AI2(["Analisis Chat &\nDraf Tiket Otomatis"])
+        UC_AI3(["Analisis & Rekomendasi\nPenanganan Tiket"])
+
+    end
+
+    %% === USER LINES ===
+    User --- UC_LOGIN
+    User --- UC_CHAT
+    User --- UC_TICKET
+    User --- UC_HISTORY
+    User --- UC_CLOSE
+
+    %% === TEKNISI LINES ===
+    Teknisi --- UC_LOGIN
+    Teknisi --- UC_TICKETLIST
+    Teknisi --- UC_ASSIGN
+    Teknisi --- UC_UPDATE
+    Teknisi --- UC_DISCUSS
+
+    %% === ADMIN eksklusif ===
+    Admin --- UC_LOGIN
+    Admin --- UC_DASHBOARD
+    Admin --- UC_USERS
+
+    %% === GENERALISASI AKTOR ===
+    %% Admin mewarisi semua use case User dan Teknisi
+    Admin -->|"«generalisasi»"| User
+    Admin -->|"«generalisasi»"| Teknisi
+
+    %% === INCLUDE RELATIONS (AI) ===
+    UC_CHAT -. "«include»" .-> UC_AI1
+    UC_TICKET -. "«include»" .-> UC_AI2
+    UC_UPDATE -. "«include»" .-> UC_AI3
+
+    %% === AI EXTERNAL ===
+    UC_AI1 --- AI
+    UC_AI2 --- AI
+    UC_AI3 --- AI
+
+    %% === STYLES ===
+    style SYS fill:#f0f8ff,stroke:#1565c0,stroke-width:2.5px,color:#0d47a1
+
+    style User fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style Teknisi fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style Admin fill:#fff3e0,stroke:#e65100,stroke-width:2.5px,font-weight:bold
+    style AI fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
+
+    style UC_LOGIN fill:#fff,stroke:#555,stroke-width:1px
+    style UC_CHAT fill:#bbdefb,stroke:#1565c0,stroke-width:1px
+    style UC_TICKET fill:#bbdefb,stroke:#1565c0,stroke-width:1px
+    style UC_HISTORY fill:#bbdefb,stroke:#1565c0,stroke-width:1px
+    style UC_CLOSE fill:#bbdefb,stroke:#1565c0,stroke-width:1px
+
+    style UC_TICKETLIST fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px
+    style UC_ASSIGN fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px
+    style UC_UPDATE fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px
+    style UC_DISCUSS fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px
+
+    style UC_DASHBOARD fill:#ffe0b2,stroke:#e65100,stroke-width:1px
+    style UC_USERS fill:#ffe0b2,stroke:#e65100,stroke-width:1px
+
+    style UC_AI1 fill:#e1bee7,stroke:#6a1b9a,stroke-width:1px
+    style UC_AI2 fill:#e1bee7,stroke:#6a1b9a,stroke-width:1px
+    style UC_AI3 fill:#e1bee7,stroke:#6a1b9a,stroke-width:1px
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'base',
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'basis',
+            rankSpacing: 70,
+            nodeSpacing: 25
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Gambar 3.10 Class Diagram</title>
+    <style>
+        body {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+        h2 { margin-bottom: 20px; color: #333; }
+        .mermaid { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <h2>Gambar 3.10 Class Diagram</h2>
+    <div class="mermaid">
+    classDiagram
+        class User {
+            +bigint id
+            +varchar name
+            +varchar email
+            +varchar password
+            +varchar role
+            +timestamp created_at
+            +timestamp updated_at
+        }
+
+        class Ticket {
+            +bigint id
+            +bigint user_id
+            +varchar subject
+            +text description
+            +varchar category
+            +enum priority
+            +enum status
+            +varchar attachment
+            +bigint assigned_to
+            +text ai_summary
+            +text ai_causes
+            +text ai_recommendations
+            +varchar ai_confidence
+            +text resolution_summary
+            +timestamp created_at
+            +timestamp updated_at
+        }
+
+        class TicketHistory {
+            +bigint id
+            +bigint ticket_id
+            +bigint user_id
+            +enum old_status
+            +enum new_status
+            +text notes
+            +timestamp created_at
+            +timestamp updated_at
+        }
+
+        class TicketMessage {
+            +bigint id
+            +bigint ticket_id
+            +bigint user_id
+            +text message
+            +timestamp created_at
+            +timestamp updated_at
+        }
+
+        class ChatbotConversation {
+            +bigint id
+            +bigint user_id
+            +varchar title
+            +varchar status
+            +timestamp created_at
+            +timestamp updated_at
+        }
+
+        class ChatMessage {
+            +bigint id
+            +bigint chatbot_conversation_id
+            +bigint user_id
+            +longText message
+            +varchar sender_type
+            +longText response
+            +timestamp created_at
+            +timestamp updated_at
+        }
+
+        User "1" --> "0..*" Ticket : membuat
+        User "1" --> "0..*" Ticket : ditugaskan (assigned_to)
+        User "1" --> "0..*" ChatbotConversation : memulai
+        User "1" --> "0..*" ChatMessage : mengirim
+        User "1" --> "0..*" TicketHistory : mengubah status
+        User "1" --> "0..*" TicketMessage : mengirim pesan diskusi
+
+        Ticket "1" --> "0..*" TicketHistory : memiliki riwayat
+        Ticket "1" --> "0..*" TicketMessage : memiliki diskusi
+
+        ChatbotConversation "1" --> "0..*" ChatMessage : memiliki pesan
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            class: {
+                useMaxWidth: false
+            }
+        });
+    </script>
+</body>
+</html>

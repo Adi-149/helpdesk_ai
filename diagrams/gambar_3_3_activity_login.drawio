@@ -1,0 +1,140 @@
+<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="900" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ===== BORDER & SWIMLANE HEADER ===== -->
+    <!-- Outer border -->
+    <mxCell id="border" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;pointerEvents=0;" vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="650" height="780" as="geometry" />
+    </mxCell>
+
+    <!-- Header row background (Aktor) -->
+    <mxCell id="hdr_aktor_bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#000000;pointerEvents=0;" vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="310" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Header row background (Sistem) -->
+    <mxCell id="hdr_sistem_bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#000000;pointerEvents=0;" vertex="1" parent="1">
+      <mxGeometry x="330" y="20" width="340" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Header label: Aktor -->
+    <mxCell id="lbl_aktor" value="Aktor" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=13;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="310" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Header label: Sistem -->
+    <mxCell id="lbl_sistem" value="Sistem" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=13;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="330" y="20" width="340" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Vertical divider line between lanes -->
+    <mxCell id="vdiv" value="" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1">
+      <mxGeometry relative="0" as="geometry">
+        <mxPoint x="330" y="60" as="sourcePoint" />
+        <mxPoint x="330" y="800" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ===== ACTIVITY NODES ===== -->
+
+    <!-- Start node (filled circle) -->
+    <mxCell id="start" value="" style="ellipse;aspect=fixed;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="160" y="82" width="30" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Act1: Input Email dan Password -->
+    <mxCell id="act1" value="Input Email dan Password" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;strokeColor=#1565C0;fillColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="70" y="160" width="200" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Act2: Klik Tombol Login -->
+    <mxCell id="act2" value="Klik Tombol Login" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;strokeColor=#1565C0;fillColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="85" y="270" width="170" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Act3: Melakukan Pengecekan Data (Sistem lane) -->
+    <mxCell id="act3" value="Melakukan Pengecekan Data di Database" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;strokeColor=#1565C0;fillColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="345" y="270" width="195" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Decision: Validasi -->
+    <mxCell id="dec1" value="Validasi" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="432" y="378" width="100" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Act4: Pesan Error (cabang Tidak) -->
+    <mxCell id="act4" value="Pesan &quot;Email atau Password Salah&quot;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;strokeColor=#C62828;fillColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="335" y="520" width="175" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Act5: Masuk ke Dashboard (cabang Ya) -->
+    <mxCell id="act5" value="Masuk ke Dashboard Sesuai Role" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;strokeColor=#2E7D32;fillColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="510" y="520" width="145" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- End node (double circle = final state) -->
+    <mxCell id="end" value="" style="ellipse;aspect=fixed;fillColor=#000000;strokeColor=#000000;double=1;" vertex="1" parent="1">
+      <mxGeometry x="565" y="640" width="30" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- ===== EDGES / ARROWS ===== -->
+
+    <!-- Start → Act1 -->
+    <mxCell id="e1" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" source="start" target="act1" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Act1 → Act2 -->
+    <mxCell id="e2" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" source="act1" target="act2" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Act2 → Act3 (cross-lane, horizontal) -->
+    <mxCell id="e3" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="act2" target="act3" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Act3 → Decision -->
+    <mxCell id="e4" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" source="act3" target="dec1" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Decision → Act4 (Tidak: exit left, go down-left to error) -->
+    <mxCell id="e5" value="Tidak" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="dec1" target="act4" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="395" y="418" />
+          <mxPoint x="395" y="520" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Decision → Act5 (Ya: exit right, go down-right to dashboard) -->
+    <mxCell id="e6" value="Ya" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="dec1" target="act5" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="582" y="418" />
+          <mxPoint x="582" y="520" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Act4 → Act1 (loop back: exit left → up through Aktor lane → enter Act1 left) -->
+    <mxCell id="e7" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="act4" target="act1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="35" y="545" />
+          <mxPoint x="35" y="185" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Act5 → End -->
+    <mxCell id="e8" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;" edge="1" source="act5" target="end" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dasbor IT Support</h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dasbor IT Teknisi</h2>
             <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 opacity-30" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18 8C18 5.24 15.76 3 13 3H11C8.24 3 6 5.24 6 8V12C6 14.76 8.24 17 11 17H12V20C12 21.1 11.1 22 10 22C8.9 22 8 21.1 8 20V18H16V20C16 21.1 15.1 22 14 22C12.9 22 12 21.1 12 20V17H13C15.76 17 18 14.76 18 12V8Z"/>
             </svg>
@@ -15,7 +15,7 @@
             <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white shadow-lg">
                 <div class="flex items-end justify-between">
                     <div>
-                        <p class="text-blue-100 text-sm font-medium">Total Tiket</p>
+                        <p class="text-purple-100 text-sm font-medium">Staff Teknisi</p>
                         <p class="text-4xl font-bold">{{ $totalTickets }}</p>
                     </div>
                     <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 012-2h6a2 2 0 012 2v6h4a2 2 0 012 2v5a2 2 0 01-2 2H3a2 2 0 01-2-2v-5a2 2 0 012-2h4V3z"/></svg>
@@ -78,7 +78,7 @@
                     <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
                         <div>
                             <p class="text-sm font-medium text-gray-700">Sedang Diproses</p>
-                            <p class="text-xs text-gray-500">Sedang ditangani support</p>
+                            <p class="text-xs text-gray-500">Sedang ditangani teknisi</p>
                         </div>
                         <div class="text-right">
                             <p class="text-2xl font-bold text-yellow-600">{{ $ticketsByStatus['progress'] }}</p>
@@ -231,7 +231,7 @@
                             </td>
                             <td class="px-4 py-3 text-sm text-gray-700">
                                 @if($ticket->assigned_to)
-                                    <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs">{{ $ticket->assignedSupport->name }}</span>
+                                    <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-medium">{{ $ticket->assignedSupport->name }}</span>
                                 @else
                                     <span class="px-2 py-1 bg-gray-100 text-gray-500 rounded text-xs italic">Belum ditangani</span>
                                 @endif

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Diagram Buat Tiket - Sistem Helpdesk Chatbot AI</title>
+    <style>
+        body {
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 24px;
+        }
+        .mermaid {
+            width: 100%;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Gambar 3.4 Activity Diagram Buat Tiket</h2>
+
+<div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '13px', 'lineColor': '#333'}}}%%
+flowchart TD
+
+    Start(["●\nMulai"])
+
+    %% --- AKTOR ---
+    Access[/Mengakses Halaman Buat Tiket/]
+    FillForm[/Mengisi Formulir Tiket<br>judul, deskripsi, kategori, & lampiran/]
+    ClickSave[/Klik Tombol Simpan/]
+
+    %% --- SISTEM ---
+    Validate["Memvalidasi Data Inputan"]
+    DecValid{"Data Valid?"}
+    Error["Menampilkan Pesan<br>Error Validasi"]
+
+    DecChatbot{"Dibuat dari<br>Chatbot AI?"}
+
+    UseDraft["Mengambil Data Analisis AI<br>dari Riwayat Obrolan Chatbot"]
+    CallAI["Memanggil OpenRouter API<br>untuk Analisis Secara Sinkron"]
+
+    Save["Menyimpan Tiket ke Database<br>beserta kolom AI (ai_summary, ai_causes, ai_recommendations)"]
+    Notify["Mengirim Notifikasi Tiket Baru<br>dan Redirect ke Halaman Daftar Tiket"]
+
+    End(["◉\nSelesai"])
+
+    %% CONNECTIONS
+    Start --> Access
+    Access --> FillForm
+    FillForm --> ClickSave
+    ClickSave --> Validate
+    Validate --> DecValid
+
+    DecValid -- "Tidak" --> Error
+    Error --> FillForm
+
+    DecValid -- "Ya" --> DecChatbot
+
+    DecChatbot -- "Ya" --> UseDraft
+    DecChatbot -- "Tidak" --> CallAI
+
+    UseDraft --> Save
+    CallAI --> Save
+
+    Save --> Notify
+    Notify --> End
+
+    %% STYLING
+    style Start fill:#222,stroke:#222,color:#fff,rx:50
+    style End fill:#222,stroke:#222,color:#fff,rx:50
+
+    style Access fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+    style FillForm fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+    style ClickSave fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+
+    style Validate fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+    style Save fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+    style Notify fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+
+    style DecValid fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+    style DecChatbot fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+
+    style Error fill:#ffcdd2,stroke:#c62828,stroke-width:1px
+
+    style UseDraft fill:#e1bee7,stroke:#6a1b9a,stroke-width:1.5px
+    style CallAI fill:#e1bee7,stroke:#6a1b9a,stroke-width:1.5px
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'base',
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'linear',
+            rankSpacing: 50,
+            nodeSpacing: 25
+        }
+    });
+</script>
+
+</body>
+</html>

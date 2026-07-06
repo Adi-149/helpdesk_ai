@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Gambar 3.9 Sequence Diagram Admin</title>
+    <style>
+        body {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+        h2 { margin-bottom: 20px; color: #333; }
+        .mermaid { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <h2>Gambar 3.9 Sequence Diagram Admin</h2>
+    <div class="mermaid">
+    sequenceDiagram
+        actor A as Admin
+        participant B as Browser / View
+        participant AC as AuthController
+        participant ADC as AdminController
+        participant DB as Database (users)
+
+        Note over A,DB: Proses Login Admin
+        A->>B: Mengakses halaman login
+        B->>AC: POST /login (email, password)
+        AC->>DB: SELECT * FROM users WHERE email=?
+        DB-->>AC: Data user (role='admin')
+        AC-->>B: Redirect ke Dashboard Admin
+        B-->>A: Menampilkan Dashboard Admin
+
+        Note over A,DB: Melihat Daftar Pengguna
+        A->>B: Mengakses halaman Kelola Pengguna
+        B->>ADC: GET /admin/users
+        ADC->>DB: SELECT * FROM users GROUP BY role
+        DB-->>ADC: Daftar semua pengguna (user, support, admin)
+        ADC-->>B: Return view daftar pengguna
+        B-->>A: Menampilkan daftar pengguna berdasarkan role
+
+        Note over A,DB: Mengubah Role Pengguna
+        A->>B: Memilih pengguna dan memilih role baru
+        B->>ADC: PUT /admin/users/{id}/role (new_role)
+        ADC->>DB: UPDATE users SET role=? WHERE id=?
+        DB-->>ADC: Data berhasil diperbarui
+        ADC-->>B: Redirect dengan pesan konfirmasi
+        B-->>A: Menampilkan pesan "Role berhasil diperbarui"
+
+        Note over A,DB: Menghapus Pengguna
+        A->>B: Klik tombol hapus pengguna
+        B->>ADC: DELETE /admin/users/{id}
+        ADC->>ADC: Cek apakah id == auth()->id() ?
+        alt ID sama dengan Admin sendiri
+            ADC-->>B: Return error "Tidak dapat menghapus akun sendiri"
+            B-->>A: Menampilkan pesan error
+        else ID bukan Admin sendiri
+            ADC->>DB: DELETE FROM users WHERE id=?
+            DB-->>ADC: Data berhasil dihapus
+            ADC-->>B: Redirect dengan pesan sukses
+            B-->>A: Menampilkan pesan "Pengguna berhasil dihapus"
+        end
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            sequence: {
+                actorMargin: 60,
+                noteMargin: 10,
+                messageMargin: 35,
+                mirrorActors: false,
+                width: 180,
+                height: 40,
+                boxMargin: 10,
+                useMaxWidth: false
+            }
+        });
+    </script>
+</body>
+</html>

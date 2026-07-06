@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Diagram Login - Sistem Helpdesk Chatbot AI</title>
+    <style>
+        body {
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 24px;
+        }
+        .mermaid {
+            width: 100%;
+            max-width: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Gambar 3.3 Activity Diagram Login</h2>
+
+<div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '13px', 'lineColor': '#333'}}}%%
+flowchart TD
+
+    Start(["●\nMulai"])
+
+    A[/Mengakses Halaman Login/]
+    B[/Mengisi Email dan Password/]
+    C["Memvalidasi Format Input"]
+
+    D{"Format\nValid?"}
+
+    E["Menampilkan Pesan\nError Validasi"]
+
+    F["Memeriksa Data Email & Password\ndi Database"]
+
+    G{"Kredensial\nBenar?"}
+
+    H["Menampilkan Pesan\nEmail/Password Salah"]
+
+    I{"Cek Role\nPengguna"}
+
+    J["Redirect ke\nDashboard User"]
+    K["Redirect ke\nDashboard Support"]
+    L["Redirect ke\nDashboard Admin"]
+
+    End(["◉\nSelesai"])
+
+    %% FLOW
+    Start --> A
+    A --> B
+    B --> C
+    C --> D
+
+    D -- "Tidak" --> E
+    E --> B
+
+    D -- "Ya" --> F
+    F --> G
+
+    G -- "Tidak" --> H
+    H --> B
+
+    G -- "Ya" --> I
+
+    I -- "role = user" --> J
+    I -- "role = support" --> K
+    I -- "role = admin" --> L
+
+    J --> End
+    K --> End
+    L --> End
+
+    %% STYLES
+    style Start fill:#222,stroke:#222,color:#fff,rx:50
+    style End fill:#222,stroke:#222,color:#fff,rx:50
+
+    style A fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+    style B fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+
+    style C fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+    style F fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+    style G fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+    style I fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+
+    style E fill:#ffcdd2,stroke:#c62828,stroke-width:1px
+    style H fill:#ffcdd2,stroke:#c62828,stroke-width:1px
+
+    style J fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px
+    style K fill:#c8e6c9,stroke:#2e7d32,stroke-width:1.5px
+    style L fill:#ffe0b2,stroke:#e65100,stroke-width:1.5px
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'base',
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'linear',
+            rankSpacing: 55,
+            nodeSpacing: 30
+        }
+    });
+</script>
+
+</body>
+</html>

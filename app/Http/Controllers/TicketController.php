@@ -17,22 +17,60 @@ use Illuminate\Support\Facades\Notification;
 
 class TicketController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Jika support, redirect ke support.tickets
         if (auth()->user()->role === 'support') {
             return redirect()->route('support.tickets');
         }
 
-        // Jika admin, tampilkan semua tiket
-        if (auth()->user()->role === 'admin') {
-            $tickets = Ticket::with(['user', 'assignedSupport'])->latest()->get();
-            return view('tickets.index', compact('tickets'));
+        // Ambil filter query
+        $filterStatus = $request->query('status');
+        $filterPriority = $request->query('priority');
+        $filterCategory = $request->query('category');
+        $filterDateFrom = $request->query('date_from');
+        $filterDateTo = $request->query('date_to');
+
+        // Query dasar tiket
+        $ticketsQuery = Ticket::with(['user', 'assignedSupport'])->latest();
+
+        // Jika bukan admin, batasi ke tiket milik user
+        if (auth()->user()->role !== 'admin') {
+            $ticketsQuery->where('user_id', auth()->id());
         }
-        
-        // Regular user: tampilkan ticket mereka saja
-        $tickets = Ticket::where('user_id', auth()->id())->latest()->get();
-        return view('tickets.index', compact('tickets'));
+
+        // Terapkan filter jika ada
+        if ($filterStatus) {
+            $ticketsQuery->where('status', $filterStatus);
+        }
+        if ($filterPriority) {
+            $ticketsQuery->where('priority', $filterPriority);
+        }
+        if ($filterCategory) {
+            $ticketsQuery->where('category', $filterCategory);
+        }
+        if ($filterDateFrom) {
+            $ticketsQuery->whereDate('created_at', '>=', $filterDateFrom);
+        }
+        if ($filterDateTo) {
+            $ticketsQuery->whereDate('created_at', '<=', $filterDateTo);
+        }
+
+        // Pagination 15 per halaman
+        $tickets = $ticketsQuery->paginate(15)->appends($request->query());
+
+        // Daftar kategori unik untuk filter
+        $categories = Ticket::select('category')->distinct()->orderBy('category')->pluck('category');
+
+        return view('tickets.index', compact(
+            'tickets',
+            'categories',
+            'filterStatus',
+            'filterPriority',
+            'filterCategory',
+            'filterDateFrom',
+            'filterDateTo'
+        ));
     }
 
 
@@ -69,11 +107,47 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
-    public function all()
-{
-    $tickets = Ticket::latest()->get();
-    return view('support.tickets', compact('tickets'));
-}
+    public function all(Request $request)
+    {
+        $filterStatus = $request->query('status');
+        $filterPriority = $request->query('priority');
+        $filterCategory = $request->query('category');
+        $filterDateFrom = $request->query('date_from');
+        $filterDateTo = $request->query('date_to');
+
+        $ticketsQuery = Ticket::with(['user', 'assignedSupport'])->latest();
+
+        if ($filterStatus) {
+            $ticketsQuery->where('status', $filterStatus);
+        }
+        if ($filterPriority) {
+            $ticketsQuery->where('priority', $filterPriority);
+        }
+        if ($filterCategory) {
+            $ticketsQuery->where('category', $filterCategory);
+        }
+        if ($filterDateFrom) {
+            $ticketsQuery->whereDate('created_at', '>=', $filterDateFrom);
+        }
+        if ($filterDateTo) {
+            $ticketsQuery->whereDate('created_at', '<=', $filterDateTo);
+        }
+
+        $tickets = $ticketsQuery->paginate(15)->appends($request->query());
+
+        // Get distinct categories
+        $categories = Ticket::select('category')->distinct()->orderBy('category')->pluck('category');
+
+        return view('support.tickets', compact(
+            'tickets',
+            'categories',
+            'filterStatus',
+            'filterPriority',
+            'filterCategory',
+            'filterDateFrom',
+            'filterDateTo'
+        ));
+    }
 
 
     public function show($id)

@@ -46,15 +46,4 @@
             </x-primary-button>
         </div>
     </form>
-
-    <div class="mt-6 text-center">
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Belum punya akun?') }}
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                    {{ __('Daftar') }}
-                </a>
-            @endif
-        </p>
-    </div>
 </x-guest-layout>

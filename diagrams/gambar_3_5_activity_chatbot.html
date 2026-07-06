@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Diagram Chatbot AI - Sistem Helpdesk Chatbot AI</title>
+    <style>
+        body {
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 24px;
+        }
+        .mermaid {
+            width: 100%;
+            max-width: 850px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Gambar 3.5 Activity Diagram Chatbot AI</h2>
+
+<div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '13px', 'lineColor': '#333'}}}%%
+flowchart TD
+
+    Start(["●\nMulai"])
+
+    %% --- USER ---
+    Access[/Mengakses Halaman Chatbot/]
+    SendMsg[/Mengirim Pesan Chat/]
+
+    %% --- SISTEM ---
+    Validate["Memvalidasi Format & Panjang Pesan"]
+    DecValid{"Pesan Valid?"}
+    Error["Menampilkan Pesan<br>Error Validasi"]
+    SaveUser["Simpan Pesan User ke Database<br>(sender_type = 'user')"]
+    CallAPI["Kirim Request Pesan & Riwayat Chat<br>ke OpenRouter API"]
+
+    %% --- OPENROUTER API ---
+    DecAPI{"Koneksi API<br>Berhasil?"}
+    ReturnAI["Hasilkan Jawaban Respons AI<br>(Gemini/GPT)"]
+
+    %% --- SISTEM FALLBACK ---
+    Fallback["Jalankan Fallback Keyword Matching<br>(Mencari kecocokan kata kunci kendala)"]
+
+    %% --- SIMPAN & TAMPIL ---
+    SaveBot["Simpan Respons Bot ke Database<br>(sender_type = 'bot')"]
+    Display[/Tampilkan Balasan Chat di Antarmuka User/]
+
+    End(["◉\nSelesai"])
+
+    %% FLOW
+    Start --> Access
+    Access --> SendMsg
+    SendMsg --> Validate
+    Validate --> DecValid
+
+    DecValid -- "Tidak" --> Error
+    Error --> SendMsg
+
+    DecValid -- "Ya" --> SaveUser
+    SaveUser --> CallAPI
+    CallAPI --> DecAPI
+
+    DecAPI -- "Ya" --> ReturnAI
+    DecAPI -- "Tidak" --> Fallback
+
+    ReturnAI --> SaveBot
+    Fallback --> SaveBot
+
+    SaveBot --> Display
+    Display --> End
+
+    %% STYLING
+    style Start fill:#222,stroke:#222,color:#fff,rx:50
+    style End fill:#222,stroke:#222,color:#fff,rx:50
+
+    style Access fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+    style SendMsg fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+    style Display fill:#bbdefb,stroke:#1565c0,stroke-width:1.5px
+
+    style Validate fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+    style SaveUser fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+    style CallAPI fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+    style SaveBot fill:#e3f2fd,stroke:#1565c0,stroke-width:1px
+
+    style DecValid fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+    style DecAPI fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+
+    style Error fill:#ffcdd2,stroke:#c62828,stroke-width:1px
+
+    style ReturnAI fill:#e1bee7,stroke:#6a1b9a,stroke-width:1.5px
+    style Fallback fill:#e1bee7,stroke:#6a1b9a,stroke-width:1.5px
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'base',
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'linear',
+            rankSpacing: 50,
+            nodeSpacing: 25
+        }
+    });
+</script>
+
+</body>
+</html>

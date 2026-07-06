@@ -1,0 +1,52 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Outer Container (Main Window) -->
+    <mxCell id="outer_container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="400" as="geometry" />
+    </mxCell>
+
+    <!-- Header Panel -->
+    <mxCell id="header_panel" value="Chatbot AI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;spacingLeft=15;fontStyle=1;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- User Label -->
+    <mxCell id="user_lbl" value="User" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="105" width="100" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- User Message Box -->
+    <mxCell id="user_msg_box" value="Koneksi Wi-Fi di ruangan saya terputus dan tidak bisa terhubung kembali." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="125" width="660" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Bot Label -->
+    <mxCell id="bot_lbl" value="Bot" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="190" width="100" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Bot Message Box -->
+    <mxCell id="bot_msg_box" value="Halo! Silakan restart router Anda atau coba lupakan jaringan Wi-Fi tersebut lalu hubungkan kembali. Jika kendala berlanjut, Anda dapat membuat tiket baru." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="210" width="660" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Input Text Field -->
+    <mxCell id="input_field" value="Ketik pesan Anda..." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=middle;spacingLeft=10;fontSize=11;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="70" y="300" width="550" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Kirim Button -->
+    <mxCell id="kirim_btn" value="Kirim" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="630" y="300" width="100" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Quick Actions (Rekomendasi Pertanyaan) -->
+    <mxCell id="quick_actions" value="Pertanyaan Cepat:  [ Jam Kerja ]    [ Cara Membuat Tiket ]    [ Minta Bantuan ]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#555555;" vertex="1" parent="1">
+      <mxGeometry x="70" y="360" width="660" height="30" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

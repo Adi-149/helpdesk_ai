@@ -1,0 +1,94 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Outer Screen Container -->
+    <mxCell id="outer_screen" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="450" as="geometry" />
+    </mxCell>
+
+    <!-- Navigation Header -->
+    <mxCell id="nav_header" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="700" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Nav Items -->
+    <mxCell id="nav_logo" value="Logo Helpdesk" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="60" width="100" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="nav_dashboard" value="Dasbor" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="190" y="60" width="60" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="nav_tickets" value="Tiket" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="270" y="60" width="60" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="nav_profile" value="Profil" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="620" y="60" width="60" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Welcome Text -->
+    <mxCell id="welcome_txt" value="Selamat datang kembali, User!" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=11;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="105" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Top Cards (Grid Stats) -->
+    <mxCell id="card_total" value="Total Tiket" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="70" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="card_open" value="Tiket Dibuka" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="230" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="card_progress" value="Tiket Diproses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="390" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="card_resolved" value="Tiket Selesai" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontColor=#000000;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="550" y="135" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Tiket User Panel (Left Column) -->
+    <mxCell id="panel_user_tickets" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
+      <mxGeometry x="70" y="200" width="310" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="lbl_user_tickets" value="Tiket User" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=10;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="80" y="205" width="100" height="15" as="geometry" />
+    </mxCell>
+    <mxCell id="user_stat_open" value="Dibuka" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=9;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="90" y="225" width="270" height="18" as="geometry" />
+    </mxCell>
+    <mxCell id="user_stat_progress" value="Diproses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=9;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="90" y="250" width="270" height="18" as="geometry" />
+    </mxCell>
+    <mxCell id="user_stat_resolved" value="Selesai" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=9;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="90" y="275" width="270" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- Prioritas Tiket Panel (Right Column) -->
+    <mxCell id="panel_priority_tickets" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
+      <mxGeometry x="400" y="200" width="310" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="lbl_priority_tickets" value="Prioritas Tiket" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontStyle=0;fontSize=10;strokeColor=none;fillColor=none;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="410" y="205" width="100" height="15" as="geometry" />
+    </mxCell>
+    <mxCell id="priority_high" value="Tinggi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=9;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="420" y="225" width="270" height="18" as="geometry" />
+    </mxCell>
+    <mxCell id="priority_medium" value="Sedang" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=9;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="420" y="250" width="270" height="18" as="geometry" />
+    </mxCell>
+    <mxCell id="priority_low" value="Rendah" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=9;fontColor=#000000;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+      <mxGeometry x="420" y="275" width="270" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- Recent Tickets Table -->
+    <mxCell id="table_tickets" value="Tabel Tiket" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="70" y="325" width="560" height="110" as="geometry" />
+    </mxCell>
+
+    <!-- Floating Chat AI Widget Button -->
+    <mxCell id="chat_ai_widget" value="Chat AI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontStyle=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="650" y="380" width="60" height="55" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

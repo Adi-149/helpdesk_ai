@@ -2,9 +2,17 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Kelola Pengguna</h2>
-            <svg class="w-8 h-8 text-red-600 dark:text-red-400 opacity-30" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-            </svg>
+            <div class="flex items-center gap-4">
+                <a href="{{ route('register') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg shadow transition-all duration-200">
+                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                    </svg>
+                    Tambah Pengguna Baru
+                </a>
+                <svg class="w-8 h-8 text-red-600 dark:text-red-400 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+            </div>
         </div>
     </x-slot>
 
@@ -183,7 +191,7 @@
                                         @method('PATCH')
                                         <select name="role" onchange="this.form.submit()" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded dark:bg-gray-700 dark:text-white text-sm">
                                             <option value="user" @selected($user->role === 'user')>Pengguna Biasa</option>
-                                            <option value="support" @selected($user->role === 'support')>Support</option>
+                                            <option value="support" @selected($user->role === 'support')>Teknisi</option>
                                         </select>
                                     </form>
                                 </td>
@@ -241,7 +249,7 @@
                                         @method('PATCH')
                                         <select name="role" onchange="this.form.submit()" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded dark:bg-gray-700 dark:text-white text-sm">
                                             <option value="user" @selected($staff->role === 'user')>Pengguna Biasa</option>
-                                            <option value="support" @selected($staff->role === 'support')>Support</option>
+                                            <option value="support" @selected($staff->role === 'support')>Teknisi</option>
                                         </select>
                                     </form>
                                 </td>

@@ -1,85 +1,46 @@
-BAB IV 
-HASIL DAN PEMBAHASAN 
-Bagian ini menampilkan hasil implementasi dan fungsionalitas dalam 
-rekayasa perangkat lunak dengan menerapkan sistem penyewaan bus pariwisata 
-berbasis web. Perangkat lunak dan perangkat keras termasuk dalam pembahasan 
-implementasi dan pengujian sistem. 
-Implementasi 
-Implementasi merupakan tahap krusial setelah perancangan dan analisis 
-program selesai. Tahap ini berfokus pada pembangunan aplikasi yang 
-merepresentasikan desain yang telah dibuat secara nyata. Tujuan utama 
-implementasi adalah membangun aplikasi yang mudah dan nyaman digunakan oleh 
-pengguna. Oleh karena itu, aplikasi perlu melalui proses pengujian dan 
-penyempurnaan yang menyeluruh untuk meminimalisir kesalahan dan memastikan 
-kelancaran sistem. Implementasi yang cermat dan terencana akan menghasilkan 
-aplikasi yang siap diluncurkan dan memberikan manfaat bagi para user. 
-Implementasi Perangkat Lunak 
-Implementasi Perangkat Lunak Beberapa perangkat lunak yang perlu 
-disiapkan selama pembangunan sistem ini adalah sebagai berikut: 
-1. Laragon, digunakan sebagai web server lokal untuk menjalankan Apache dan 
-MySQL. Berfungsi menjalankan proyek berbasis PHP secara lokal. 
-2. PHP Digunakan sebagai bahasa pemrograman server untuk membangun 
-logika aplikasi dan pengolahan data. 
-3. Google Chrome Digunakan untuk mengakses dan menguji tampilan 
-antarmuka website selama proses pengembangan dan pengujian sistem. 
-4. Laravel Framework PHP yang digunakan dalam pengembangan sistem untuk 
-mengatur struktur kode berbasis MVC, serta mempermudah routing, 
-validasi, dan pengolahan database. 
-55 
-56 
-5. Composer Digunakan untuk mengelola dependensi PHP yang dibutuhkan 
-selama pengembangan sistem. 
-6. Midtrans (Snap.js) Digunakan sebagai payment gateway untuk menangani 
-proses pembayaran, termasuk pembuatan token transaksi dan callback ke 
-sistem. 
-Implementasi Database 
-Dalam membuat sistem berbasis web dibutuhkan database dengan nama 
-database bus, yang terdiri dari beberapa tabel yang telah dirancangkan sebelumnya 
-pada tahap desain. Tabel-tabel tersebut antara lain: 
-Gambar 4.1 Tabel Bus 
-Sesuai dari yang rancang atau digambarkan sebelumnya, pada Gambar 4.1 
-menghasilkan struktur tabel bus yang sudah diletakkan pada MySql. Tabel ini 
-digunakan untuk menampung data bus. 
-Gambar 4.2 Tabel Bussewa 
-Pada Gambar 4.2 menampilkan struktur tabel bussewa yang sudah 
-dimplementasikan pada MySql. Tabel ini digunakan untuk menampung antara data 
-penyewaan dan data bus, kegunaannya adalah menampung data penyewaan yang 
-menyewa bus lebih dari satu untuk kebutuhan jalannya sistem agar efisien. 
-Gambar 4.3 Tabel Gallery 
-57 
-Pada Gambar 4.3 menampilkan struktur tabel gallery yang telah berada pada 
-halaman PhpMyAdmin. Tabel ini digunakan untuk menampung alamat gambar
-gambar bus pada detail bus. 
-Gambar 4.4 Tabel Pembayaran 
-Sesuai dari yang direncanakan sebelumnya, pada Gambar 4.4 menghasilkan 
-struktur tabel pembayaran yang sudah diimplementasikan pada MySql. Tabel ini 
-digunakan untuk menampung data pembayaran dari pengguna. Tabel ini 
-dikonfigurasikan juga dengan midtrans agar tetap sinkron. 
-Gambar 4.5 Tabel Penjemputan 
-Pada Gambar 4.5 menampilkan struktur tabel penjemputan yang sudah 
-diletakkan pada MySql. Tabel ini digunakan untuk menampung data penjemputan 
-dimana terdapat harga_penjemputan berdasarkan wilayah kecamatan pada 
-kabupaten tertentu agar memudahkan perhitungan biaya sewa. 
-Gambar 4.6 Tabel Penyewaan 
-58 
-Tabel penyewan pada Gambar 4.6 menghasilkan struktur tabel utama pada 
-sistem ini, terdapat beberapa pemanggilan dari tabel lain dengan terdapat gambar 
-kunci berwarna abu dimana itu mendefinisikan sebagai foreign key. Data inputan 
-user yang menyewa akan tersimpan di tabel penyewaan ini. 
-Gambar 4.7 Tabel Tujuan 
-Tabel tujuan pada gambar 4.7 merupakan tabel yang digunakan untuk 
-menyimpan data tujuan, baik paket wisata maupun tujuan tujuan umum, selain 
-sebagai informasi, tabel ini juga menampung harga_tujuan dimana untuk 
-memudahkan dalam menentukan biaya sewa dan lama_hari untuk memperkirakan 
-lama sewanya. 
-Gambar 4.8 Tabel Users 
-Tabel pada gambar 4.8 bernama users merupakan tabel yang digunakan untuk 
-menampung data pengakses sistem, dimana terdapat email dan password sebagai 
-kunci untuk login dan role sebagai pembeda antara pengakses user/pelanggan atau 
-admin. 
-Implementasi Antarmuka  
-Salah satu langkah dalam memenuhi kebutuhan pengguna untuk berinteraksi 
-dengan sistem yang dibuat adalah implementasi antar muka. Antarmuka yang baik 
-59 
-akan membantu pengguna memahami proses yang sedang dilakukan sistem, 
-sehingga sistem dapat bekerja lebih baik.
+2.2 Tinjauan Teori
+
+Tinjauan teori merupakan landasan konseptual yang digunakan sebagai dasar dalam penelitian ini. Teori-teori yang dibahas meliputi konsep sistem helpdesk ticketing, chatbot, Artificial Intelligence (AI) beserta Large Language Model (LLM), API (Application Programming Interface) khususnya OpenRouter, pengembangan web menggunakan Framework Laravel, basis data relasional MySQL, perancangan sistem menggunakan UML (Unified Modeling Language), serta metode pengujian perangkat lunak menggunakan Blackbox Testing.
+
+2.2.1 Sistem Helpdesk Ticketing
+Sistem helpdesk ticketing merupakan sistem layanan yang digunakan oleh organisasi untuk menangani permintaan layanan, keluhan, serta permasalahan teknis yang dilaporkan oleh pengguna. Sistem ini berfungsi sebagai penghubung antara pengguna dan penyedia layanan, sehingga setiap permasalahan dapat ditangani secara terstruktur dan terdokumentasi dengan baik. Dalam praktiknya, sistem ini membantu organisasi dalam mengelola volume laporan yang terus meningkat, sehingga dapat mengurangi penumpukan masalah yang belum terselesaikan serta menekan biaya pengembangan dan pemeliharaan operasional layanan (Kumar et al., 2023).
+Sistem helpdesk ticketing menyediakan platform terpusat berbasis web yang memungkinkan pengguna untuk mengirimkan laporan dalam bentuk tiket serta memantau proses penyelesaiannya secara transparan. Setiap tiket yang masuk memiliki informasi penting seperti nomor tiket, kategori masalah (seperti Hardware, Software, Jaringan, Akun, Lainnya), tingkat prioritas (low, medium, high), waktu pelaporan, deskripsi kendala, serta status penyelesaian (seperti open, progress, resolved, closed). Penanganan helpdesk ini umumnya terbagi menjadi beberapa tingkatan (support tier):
+1. First-Level Support (Tier 1): Bertanggung jawab atas penerimaan keluhan pertama kali dan menangani masalah-masalah dasar/umum yang bersifat operasional. Dalam penelitian ini, Tier 1 diotomatisasi menggunakan chatbot berbasis Artificial Intelligence (AI).
+2. Second-Level Support (Tier 2): Menangani kendala teknis yang lebih kompleks yang tidak dapat diselesaikan oleh Tier 1. Pada sistem ini, Tier 2 ditangani oleh staf teknisi (support) yang didukung oleh asisten analisis AI.
+Dokumentasi riwayat tiket yang tersimpan di dalam sistem juga dapat digunakan sebagai referensi atau basis pengetahuan (knowledge base) apabila masalah serupa terjadi kembali di masa mendatang (Chanchad et al., 2023; Gadkari et al., 2025).
+
+2.2.2 Chatbot
+Chatbot merupakan program komputer yang dirancang untuk mensimulasikan percakapan antara manusia dan mesin melalui teks maupun suara. Chatbot bekerja dengan memanfaatkan teknologi pemrograman untuk memahami konteks pertanyaan pengguna dan memberikan respon yang sesuai secara otomatis secara real-time tanpa harus selalu melibatkan tenaga manusia (Jadhav et al., 2022).
+Dalam implementasinya, chatbot dapat bekerja menggunakan berbagai pendekatan teknologi, mulai dari rule-based hingga AI-based chatbot. Chatbot berbasis rule-based bekerja menggunakan aturan dan pola kata kunci tertentu yang telah ditentukan sebelumnya secara statis. Sementara itu, chatbot berbasis AI memiliki kemampuan yang lebih kompleks karena mampu memahami bahasa alami pengguna melalui teknologi Natural Language Processing (NLP) dan machine learning, sehingga dapat memberikan respon yang lebih fleksibel, kontekstual, dan natural (Shah et al., 2023). Dalam sistem helpdesk ini, chatbot berfungsi sebagai First-Level Support bagi pengguna untuk berkonsultasi mengenai kendala IT mereka sebelum diteruskan ke sistem tiket manual jika kendala tidak teratasi (Gupta & Gupta, 2022).
+
+2.2.3 Artificial Intelligence (AI) dan Large Language Model (LLM)
+Artificial Intelligence (AI) atau kecerdasan buatan merupakan cabang ilmu komputer yang berfokus pada pengembangan sistem yang mampu meniru kecerdasan manusia dalam melakukan berbagai tugas, seperti pengambilan keputusan, pemrosesan bahasa alami (NLP), dan pengenalan pola (L. & G S, 2021).
+Salah satu perkembangan mutakhir AI adalah Large Language Model (LLM), yaitu tipe model kecerdasan buatan berbasis deep learning (arsitektur Transformer) yang dilatih menggunakan dataset teks berskala masif. LLM memiliki kemampuan luar biasa dalam memahami konteks kalimat, menghasilkan respons teks yang natural, melakukan klasifikasi topik secara otomatis, merangkum dokumen, dan mendeteksi maksud pengguna. Pada penelitian ini, LLM digunakan melalui pemanggilan API untuk menghasilkan percakapan chatbot yang dinamis, melakukan klasifikasi kategori dan prioritas tiket secara otomatis, menganalisis kemungkinan penyebab kendala, memberikan rekomendasi langkah penanganan teknis bagi teknisi, serta merangkum penyelesaian tiket secara otomatis (Rahman & Mehnaz, 2024; Kim, 2023).
+
+2.2.4 API (Application Programming Interface) dan OpenRouter
+Application Programming Interface (API) merupakan sekumpulan aturan, protokol, dan mekanisme yang memungkinkan berbagai aplikasi perangkat lunak untuk saling berkomunikasi dan bertukar data secara terstruktur tanpa mengharuskan pengguna memahami proses internal yang kompleks (Park et al., 2025).
+Dalam implementasi sistem berbasis AI, API banyak digunakan untuk menghubungkan aplikasi dengan layanan model bahasa besar (LLM) yang disediakan oleh pihak ketiga. Salah satu layanan agregator API terkemuka adalah OpenRouter. OpenRouter menyediakan akses terpadu ke berbagai model AI dari beberapa penyedia (seperti OpenAI, Anthropic, Google Gemini, Meta Llama) melalui satu endpoint API yang seragam. Dengan pendekatan tersebut, pengembang tidak perlu melakukan integrasi terpisah ke masing-masing penyedia layanan AI (Mohammed Mudassir & Mohammed Mushtaq, 2024). Dalam penelitian ini, OpenRouter digunakan sebagai API provider yang menghubungkan sistem helpdesk chatbot dengan model AI (seperti gpt-4o-mini) untuk memproses pertanyaan pengguna, melakukan analisis tiket, mencari kesamaan kasus, dan menyusun ringkasan penyelesaian (Ma et al., 2023; Qazi, 2023).
+
+2.2.5 Framework Laravel dan PHP
+Hypertext Preprocessor (PHP) adalah bahasa pemrograman sisi server (server-side scripting) yang dirancang khusus untuk pengembangan aplikasi web dinamis. Laravel adalah salah satu framework PHP open-source terpopuler yang menggunakan pola arsitektur Model-View-Controller (MVC):
+1. Model: Mengelola data, logika bisnis, dan interaksi langsung dengan database melalui Eloquent ORM (Object-Relational Mapping).
+2. View: Bagian antarmuka pengguna (user interface) yang bertugas menampilkan informasi kepada pengguna. Laravel menggunakan sistem templating Blade untuk mempermudah penulisan HTML dinamis.
+3. Controller: Penghubung antara Model dan View yang bertugas memproses input pengguna, berinteraksi dengan database melalui Model, dan mengirimkan hasilnya kembali ke View.
+Laravel mempermudah pengembangan web dengan menyediakan fitur bawaan seperti sistem routing, modul autentikasi (Laravel Breeze), manajemen session, sistem notifikasi (Notification), middleware untuk keamanan role, dan database migration.
+
+2.2.6 Basis Data Relasional dan MySQL
+Basis data relasional adalah jenis database yang menyimpan dan menyediakan akses ke data yang terkait satu sama lain berdasarkan model hubungan (relasional). MySQL adalah salah satu sistem manajemen basis data relasional (RDBMS) berbasis SQL (Structured Query Language) yang bersifat open-source. MySQL menggunakan tabel-tabel terpisah untuk menyimpan kelompok data, yang saling terhubung menggunakan kunci utama (Primary Key) dan kunci tamu (Foreign Key). Pada sistem helpdesk ini, MySQL digunakan untuk menyimpan data pengguna (users), tiket (tickets), riwayat tiket (ticket_histories), percakapan chatbot (chatbot_conversations), serta pesan chat (chat_messages).
+
+2.2.7 Website
+Website merupakan kumpulan halaman yang saling terhubung dan dapat diakses melalui jaringan internet menggunakan peramban (web browser) untuk menyajikan informasi, menyediakan layanan, serta memfasilitasi interaksi pengguna. Menurut Sibero (2013), website adalah suatu sistem yang berkaitan dengan dokumen yang digunakan sebagai media untuk menampilkan teks, gambar, multimedia, dan data lainnya melalui jaringan internet.
+Berdasarkan sifatnya, website dapat dibedakan menjadi dua jenis, yaitu website statis dan website dinamis. Website dinamis memungkinkan konten berubah secara otomatis berdasarkan data yang tersimpan dalam basis data dan interaksi pengguna, menjadikannya pilihan ideal untuk aplikasi web dinamis seperti sistem helpdesk ticketing (Wahyudin & Rahayu, 2020). Dalam penelitian ini, website dikembangkan berbasis PHP (Laravel) sebagai platform utama yang diakses oleh User, Support/Teknisi, dan Admin.
+
+2.2.8 Unified Modeling Language (UML)
+Unified Modeling Language (UML) adalah bahasa standar yang digunakan untuk memvisualisasikan, merancang, dan mendokumentasikan spesifikasi dari sistem perangkat lunak berorientasi objek. UML membantu mempermudah analisis kebutuhan sistem melalui beberapa diagram, antara lain:
+1. Use Case Diagram: Menggambarkan fungsionalitas sistem yang diharapkan dari sudut pandang interaksi antara aktor (aktor eksternal seperti User, Support, Admin) dan kasus penggunaan (use case).
+2. Activity Diagram: Menggambarkan alur aktivitas kerja (workflow) atau proses bisnis di dalam sistem secara berurutan.
+3. Sequence Diagram: Menggambarkan interaksi antar objek dalam sistem berdasarkan urutan waktu kejadiannya.
+4. Class Diagram: Menggambarkan struktur sistem berorientasi objek dengan menampilkan kelas-kelas sistem, atribut, metode, serta hubungan relasional antar kelas tersebut.
+
+2.2.9 Pengujian Blackbox (Blackbox Testing)
+Pengujian Blackbox adalah metode pengujian perangkat lunak yang berfokus pada fungsionalitas sistem tanpa harus mengetahui struktur kode internal atau logika program di dalamnya. Pengujian ini bertujuan untuk memastikan bahwa seluruh fungsi, input, dan output sistem berjalan sesuai dengan spesifikasi kebutuhan yang telah ditentukan, seperti kevalidan autentikasi login, pengiriman tiket, respon chatbot AI, notifikasi, penugasan teknisi, dan alur perubahan status tiket.

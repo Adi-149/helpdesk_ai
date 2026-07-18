@@ -29,11 +29,13 @@ class DashboardController extends Controller
 
         // Tickets by category
         $ticketsByCategory = [
-            'Hardware' => Ticket::where('category', 'Hardware')->count(),
-            'Software' => Ticket::where('category', 'Software')->count(),
-            'Jaringan' => Ticket::where('category', 'Jaringan')->count(),
-            'Akun' => Ticket::where('category', 'Akun')->count(),
-            'Lainnya' => Ticket::where('category', 'Lainnya')->count(),
+            'Hardware POS' => Ticket::where('category', 'Hardware POS')->count(),
+            'Printer Thermal' => Ticket::where('category', 'Printer Thermal')->count(),
+            'Barcode Scanner' => Ticket::where('category', 'Barcode Scanner')->count(),
+            'Jaringan & Internet' => Ticket::where('category', 'Jaringan & Internet')->count(),
+            'CCTV' => Ticket::where('category', 'CCTV')->count(),
+            'Software POS' => Ticket::where('category', 'Software POS')->count(),
+            'Server & Database' => Ticket::where('category', 'Server & Database')->count(),
         ];
         
         // Belum Ditangani = status open & assigned_to null

@@ -1,0 +1,132 @@
+<mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <!-- Background Frame -->
+    <mxCell id="bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=none;" vertex="1" parent="1">
+      <mxGeometry x="10" y="10" width="800" height="900" as="geometry" />
+    </mxCell>
+    
+    <!-- Top Bar -->
+    <mxCell id="topbar" value="Detail Tiket" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d1d5db;align=left;spacingLeft=20;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+      <mxGeometry x="10" y="10" width="800" height="60" as="geometry" />
+    </mxCell>
+    
+    <!-- Back Button -->
+    <mxCell id="back_btn" value="&amp;larr; Kembali" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5e7eb;strokeColor=#d1d5db;fontSize=12;fontColor=#374151;cursor=pointer;" vertex="1" parent="1">
+      <mxGeometry x="700" y="25" width="90" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Main Content Container Left (Detail Tiket) -->
+    <mxCell id="main_left" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e5e7eb;" vertex="1" parent="1">
+      <mxGeometry x="40" y="100" width="500" height="780" as="geometry" />
+    </mxCell>
+    
+    <!-- Title / Subject -->
+    <mxCell id="title" value="Laptop tidak bisa menyala dan mengeluarkan bunyi bip" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+      <mxGeometry x="60" y="120" width="450" height="30" as="geometry" />
+    </mxCell>
+    
+    <!-- Grid Info -->
+    <!-- Pengguna -->
+    <mxCell id="lbl_user" value="PENGGUNA" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#6b7280;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="60" y="160" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="val_user" value="Budi Santoso" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="60" y="180" width="200" height="20" as="geometry" />
+    </mxCell>
+    
+    <!-- Kategori -->
+    <mxCell id="lbl_cat" value="KATEGORI" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#6b7280;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="280" y="160" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="val_cat" value="Hardware" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="280" y="180" width="200" height="20" as="geometry" />
+    </mxCell>
+    
+    <!-- Prioritas -->
+    <mxCell id="lbl_pri" value="PRIORITAS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#6b7280;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="60" y="210" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="val_pri" value="High" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="60" y="230" width="200" height="20" as="geometry" />
+    </mxCell>
+    
+    <!-- Tanggal -->
+    <mxCell id="lbl_date" value="DIBUAT PADA" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#6b7280;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="280" y="210" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="val_date" value="20 Okt 2023 09:30" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="280" y="230" width="200" height="20" as="geometry" />
+    </mxCell>
+    
+    <!-- Status -->
+    <mxCell id="lbl_status" value="STATUS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#6b7280;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="60" y="270" width="100" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="val_status" value="Sedang Diproses" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=none;fontColor=#92400e;fontSize=11;align=center;" vertex="1" parent="1">
+      <mxGeometry x="60" y="290" width="110" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- Divider -->
+    <mxCell id="div1" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1px;spacingLeft=3px;spacingRight=3px;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#e5e7eb;" vertex="1" parent="1">
+      <mxGeometry x="60" y="330" width="460" height="10" as="geometry" />
+    </mxCell>
+
+    <!-- Deskripsi Laporan -->
+    <mxCell id="lbl_desc" value="Deskripsi Laporan" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#111827" vertex="1" parent="1">
+      <mxGeometry x="60" y="350" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="val_desc" value="Pagi tim support, laptop saya tiba-tiba mati sendiri saat sedang buka Excel. Pas saya coba nyalakan lagi, layarnya gelap total dan keluar bunyi bip 3 kali berturut-turut lalu mati lagi. Mohon bantuannya karena ada data kerjaan penting yang harus saya kumpulkan sore ini." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#374151" vertex="1" parent="1">
+      <mxGeometry x="60" y="380" width="460" height="80" as="geometry" />
+    </mxCell>
+    
+    <!-- Lampiran -->
+    <mxCell id="lbl_attach" value="Lampiran Foto" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#111827" vertex="1" parent="1">
+      <mxGeometry x="60" y="470" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="val_attach" value="[ Gambar / Foto Error Laptop ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;strokeWidth=1;dashed=1;fontColor=#6b7280;fontSize=12;align=center;" vertex="1" parent="1">
+      <mxGeometry x="60" y="500" width="460" height="200" as="geometry" />
+    </mxCell>
+
+    <!-- Main Content Container Right (Komentar / Update) -->
+    <mxCell id="main_right" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e5e7eb;" vertex="1" parent="1">
+      <mxGeometry x="560" y="100" width="230" height="780" as="geometry" />
+    </mxCell>
+    
+    <!-- Chat Title -->
+    <mxCell id="lbl_chat" value="Update &amp;amp; Balasan" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#111827" vertex="1" parent="1">
+      <mxGeometry x="580" y="120" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Chat Message 1 -->
+    <mxCell id="msg1" value="Admin / Support" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="580" y="150" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="msg1_body" value="Baik Bapak Budi, dari ciri-cirinya sepertinya ada masalah di memori (RAM). Teknisi kami (Agus) akan segera ke ruangan Bapak untuk pengecekan fisik." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=none;fontColor=#374151;fontSize=11;align=left;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+      <mxGeometry x="580" y="170" width="190" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="msg1_time" value="20 Okt, 09:45" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#9ca3af;" vertex="1" parent="1">
+      <mxGeometry x="670" y="150" width="100" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Chat Message 2 (User) -->
+    <mxCell id="msg2" value="Budi Santoso (Anda)" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;fontColor=#2563eb;" vertex="1" parent="1">
+      <mxGeometry x="580" y="260" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="msg2_body" value="Baik mas, terima kasih respon cepatnya. Ditunggu di lantai 3 ya." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=none;fontColor=#1e3a8a;fontSize=11;align=left;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+      <mxGeometry x="580" y="280" width="190" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="msg2_time" value="20 Okt, 09:47" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#9ca3af;" vertex="1" parent="1">
+      <mxGeometry x="580" y="260" width="100" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- Input Balasan -->
+    <mxCell id="chat_input" value="Ketik pesan..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d1d5db;fontColor=#9ca3af;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+      <mxGeometry x="580" y="800" width="190" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="btn_send" value="Kirim" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2563eb;strokeColor=none;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="710" y="845" width="60" height="25" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

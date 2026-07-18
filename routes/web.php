@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\KnowledgeBaseController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
@@ -29,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Chatbot Routes - Single Session Chat
 Route::middleware(['auth'])->group(function () {
+    Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
     Route::post('/chatbot/send-message', [ChatbotController::class, 'sendMessage'])->name('chatbot.send-message');
     Route::post('/chatbot/clear', [ChatbotController::class, 'clearChat'])->name('chatbot.clear');
     Route::post('/chatbot/analyze', [ChatbotController::class, 'analyzeConversation'])->name('chatbot.analyze');
@@ -71,6 +73,17 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::patch('/admin/users/{user}/role', [AdminController::class, 'updateRole'])->name('admin.users.update-role');
     Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
     Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
+
+    // Knowledge Base Management
+    Route::get('/admin/knowledge-base', [KnowledgeBaseController::class, 'index'])->name('admin.knowledge-base.index');
+    Route::get('/admin/knowledge-base/logs', [KnowledgeBaseController::class, 'logs'])->name('admin.knowledge-base.logs');
+    Route::get('/admin/knowledge-base/statistics', [KnowledgeBaseController::class, 'statistics'])->name('admin.knowledge-base.statistics');
+    Route::get('/admin/knowledge-base/create', [KnowledgeBaseController::class, 'create'])->name('admin.knowledge-base.create');
+    Route::post('/admin/knowledge-base', [KnowledgeBaseController::class, 'store'])->name('admin.knowledge-base.store');
+    Route::get('/admin/knowledge-base/{id}/edit', [KnowledgeBaseController::class, 'edit'])->name('admin.knowledge-base.edit');
+    Route::put('/admin/knowledge-base/{id}', [KnowledgeBaseController::class, 'update'])->name('admin.knowledge-base.update');
+    Route::delete('/admin/knowledge-base/{id}', [KnowledgeBaseController::class, 'destroy'])->name('admin.knowledge-base.destroy');
+    Route::patch('/admin/knowledge-base/{id}/toggle', [KnowledgeBaseController::class, 'toggleActive'])->name('admin.knowledge-base.toggle');
 });
 
 Route::middleware(['auth', 'is_support'])->group(function () {

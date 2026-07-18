@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dasbor Saya</h2>
-            <svg class="w-8 h-8 text-indigo-600 dark:text-indigo-400 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dasbor Saya</h2>
+            <svg class="w-8 h-8 text-blue-600 opacity-20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
             </svg>
         </div>
@@ -11,53 +11,38 @@
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <!-- Top Stats Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white shadow-lg">
-                <div class="flex items-end justify-between">
-                    <div>
-                        <p class="text-blue-100 text-sm font-medium">Total Tiket</p>
-                        <p class="text-4xl font-bold">{{ $totalTickets }}</p>
-                    </div>
-                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 012-2h6a2 2 0 012 2v6h4a2 2 0 012 2v5a2 2 0 01-2 2H3a2 2 0 01-2-2v-5a2 2 0 012-2h4V3z"/></svg>
+            <div class="bg-white border border-gray-200 border-l-4 border-l-blue-600 rounded-lg p-6 shadow-sm">
+                <div class="flex flex-col">
+                    <p class="text-blue-700 text-xs font-semibold uppercase tracking-wider">Total Tiket</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">{{ $totalTickets }}</p>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white shadow-lg">
-                <div class="flex items-end justify-between">
-                    <div>
-                        <p class="text-green-100 text-sm font-medium">Dibuka</p>
-                        <p class="text-4xl font-bold">{{ $ticketsByStatus['open'] }}</p>
-                    </div>
-                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <div class="bg-white border border-gray-200 border-l-4 border-l-green-600 rounded-lg p-6 shadow-sm">
+                <div class="flex flex-col">
+                    <p class="text-green-700 text-xs font-semibold uppercase tracking-wider">Dibuka</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">{{ $ticketsByStatus['open'] }}</p>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-lg p-6 text-white shadow-lg">
-                <div class="flex items-end justify-between">
-                    <div>
-                        <p class="text-yellow-100 text-sm font-medium">Diproses</p>
-                        <p class="text-4xl font-bold">{{ $ticketsByStatus['progress'] }}</p>
-                    </div>
-                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+            <div class="bg-white border border-gray-200 border-l-4 border-l-amber-500 rounded-lg p-6 shadow-sm">
+                <div class="flex flex-col">
+                    <p class="text-amber-700 text-xs font-semibold uppercase tracking-wider">Diproses</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">{{ $ticketsByStatus['progress'] }}</p>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-sky-500 to-sky-600 rounded-lg p-6 text-white shadow-lg">
-                <div class="flex items-end justify-between">
-                    <div>
-                        <p class="text-sky-100 text-sm font-medium">Selesai</p>
-                        <p class="text-4xl font-bold">{{ $ticketsByStatus['resolved'] }}</p>
-                    </div>
-                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <div class="bg-white border border-gray-200 border-l-4 border-l-sky-500 rounded-lg p-6 shadow-sm">
+                <div class="flex flex-col">
+                    <p class="text-sky-700 text-xs font-semibold uppercase tracking-wider">Selesai</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">{{ $ticketsByStatus['resolved'] }}</p>
                 </div>
             </div>
 
-            <div class="col-span-2 lg:col-span-1 bg-gradient-to-br from-slate-500 to-slate-600 rounded-lg p-6 text-white shadow-lg">
-                <div class="flex items-end justify-between">
-                    <div>
-                        <p class="text-slate-100 text-sm font-medium">Ditutup</p>
-                        <p class="text-4xl font-bold">{{ $ticketsByStatus['closed'] }}</p>
-                    </div>
-                    <svg class="w-12 h-12 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path fill="currentColor" d="M18 7l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/></svg>
+            <div class="col-span-2 lg:col-span-1 bg-white border border-gray-200 border-l-4 border-l-gray-500 rounded-lg p-6 shadow-sm">
+                <div class="flex flex-col">
+                    <p class="text-gray-700 text-xs font-semibold uppercase tracking-wider">Ditutup</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">{{ $ticketsByStatus['closed'] }}</p>
                 </div>
             </div>
         </div>
@@ -65,54 +50,54 @@
         <!-- Status Box -->
         <div class="mb-6">
             <!-- Status Breakdown -->
-            <div class="bg-white rounded-lg shadow p-6">
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-6">Status Tiket Saya</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     <!-- Dibuka -->
-                    <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg border-l-4 border-green-500">
+                    <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200 border-l-4 border-l-green-500">
                         <div>
-                            <p class="text-sm font-medium text-gray-700">Dibuka</p>
-                            <p class="text-xs text-gray-500">Menunggu ditangani</p>
+                            <p class="text-sm font-semibold text-gray-700">Dibuka</p>
+                            <p class="text-xs text-gray-600">Menunggu ditangani</p>
                         </div>
                         <div class="text-right">
                             <p class="text-2xl font-bold text-green-600">{{ $ticketsByStatus['open'] }}</p>
-                            <p class="text-xs text-gray-500">{{ $totalTickets > 0 ? round(($ticketsByStatus['open'] / $totalTickets) * 100) : 0 }}%</p>
+                            <p class="text-xs text-gray-600">{{ $totalTickets > 0 ? round(($ticketsByStatus['open'] / $totalTickets) * 100) : 0 }}%</p>
                         </div>
                     </div>
 
                     <!-- Diproses -->
-                    <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                    <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg border border-yellow-200 border-l-4 border-l-yellow-500">
                         <div>
-                            <p class="text-sm font-medium text-gray-700">Sedang Diproses</p>
-                            <p class="text-xs text-gray-500">Sedang ditangani support</p>
+                            <p class="text-sm font-semibold text-gray-700">Sedang Diproses</p>
+                            <p class="text-xs text-gray-600">Sedang ditangani support</p>
                         </div>
                         <div class="text-right">
                             <p class="text-2xl font-bold text-yellow-600">{{ $ticketsByStatus['progress'] }}</p>
-                            <p class="text-xs text-gray-500">{{ $totalTickets > 0 ? round(($ticketsByStatus['progress'] / $totalTickets) * 100) : 0 }}%</p>
+                            <p class="text-xs text-gray-600">{{ $totalTickets > 0 ? round(($ticketsByStatus['progress'] / $totalTickets) * 100) : 0 }}%</p>
                         </div>
                     </div>
 
                     <!-- Diselesaikan -->
-                    <div class="flex items-center justify-between p-3 bg-sky-50 rounded-lg border-l-4 border-sky-500">
+                    <div class="flex items-center justify-between p-3 bg-sky-50 rounded-lg border border-sky-200 border-l-4 border-l-sky-500">
                         <div>
-                            <p class="text-sm font-medium text-gray-700">Diselesaikan</p>
-                            <p class="text-xs text-gray-500">Terselesaikan dengan baik</p>
+                            <p class="text-sm font-semibold text-gray-700">Diselesaikan</p>
+                            <p class="text-xs text-gray-600">Terselesaikan dengan baik</p>
                         </div>
                         <div class="text-right">
                             <p class="text-2xl font-bold text-sky-600">{{ $ticketsByStatus['resolved'] }}</p>
-                            <p class="text-xs text-gray-500">{{ $totalTickets > 0 ? round(($ticketsByStatus['resolved'] / $totalTickets) * 100) : 0 }}%</p>
+                            <p class="text-xs text-gray-600">{{ $totalTickets > 0 ? round(($ticketsByStatus['resolved'] / $totalTickets) * 100) : 0 }}%</p>
                         </div>
                     </div>
 
                     <!-- Ditutup -->
-                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border-l-4 border-slate-500">
+                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200 border-l-4 border-l-slate-500">
                         <div>
-                            <p class="text-sm font-medium text-gray-700">Ditutup</p>
-                            <p class="text-xs text-gray-500">Kendala selesai & ditutup</p>
+                            <p class="text-sm font-semibold text-gray-700">Ditutup</p>
+                            <p class="text-xs text-gray-600">Kendala selesai & ditutup</p>
                         </div>
                         <div class="text-right">
                             <p class="text-2xl font-bold text-slate-600">{{ $ticketsByStatus['closed'] }}</p>
-                            <p class="text-xs text-gray-500">{{ $totalTickets > 0 ? round(($ticketsByStatus['closed'] / $totalTickets) * 100) : 0 }}%</p>
+                            <p class="text-xs text-gray-600">{{ $totalTickets > 0 ? round(($ticketsByStatus['closed'] / $totalTickets) * 100) : 0 }}%</p>
                         </div>
                     </div>
                 </div>
@@ -120,7 +105,7 @@
         </div>
 
         <!-- Recent Tickets Table -->
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-semibold text-gray-900">Tiket Terbaru Saya</h3>
                 <a href="{{ route('tickets.index') }}" class="text-blue-600 hover:text-blue-700 text-sm font-medium">Lihat Semua →</a>
@@ -128,7 +113,7 @@
             <div class="overflow-x-auto">
                 <table class="min-w-full">
                     <thead>
-                        <tr class="border-b border-gray-200">
+                        <tr class="bg-gray-50 border-b border-gray-200">
                             <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Judul</th>
                             <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Kategori</th>
                             <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
@@ -174,4 +159,3 @@
         </div>
     </div>
 </x-app-layout>
-

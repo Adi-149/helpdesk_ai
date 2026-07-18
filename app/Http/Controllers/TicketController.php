@@ -89,6 +89,12 @@ class TicketController extends Controller
         ]);
 
         $ticket = Ticket::findOrFail($id);
+
+        if ($ticket->assigned_to !== null) {
+            return redirect()->route('support.tickets')
+                ->with('error', 'Tiket ini sudah ditugaskan ke teknisi lain.');
+        }
+
         $ticket->assigned_to = auth()->id();
         $ticket->status = 'progress';
         $ticket->save();
@@ -298,7 +304,7 @@ class TicketController extends Controller
         $request->validate([
             'subject' => 'required',
             'description' => 'required',
-            'category' => 'required|in:Hardware,Software,Jaringan,Akun,Lainnya',
+            'category' => 'required|in:Hardware POS,Printer Thermal,Barcode Scanner,Jaringan & Internet,CCTV,Software POS,Server & Database',
             'attachment' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

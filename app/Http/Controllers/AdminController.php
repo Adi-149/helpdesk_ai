@@ -36,11 +36,13 @@ class AdminController extends Controller
 
         // Statistik Kategori Tiket
         $categoryCounts = [
-            'Hardware' => \App\Models\Ticket::where('category', 'Hardware')->count(),
-            'Software' => \App\Models\Ticket::where('category', 'Software')->count(),
-            'Jaringan' => \App\Models\Ticket::where('category', 'Jaringan')->count(),
-            'Akun' => \App\Models\Ticket::where('category', 'Akun')->count(),
-            'Lainnya' => \App\Models\Ticket::where('category', 'Lainnya')->count(),
+            'Hardware POS' => \App\Models\Ticket::where('category', 'Hardware POS')->count(),
+            'Printer Thermal' => \App\Models\Ticket::where('category', 'Printer Thermal')->count(),
+            'Barcode Scanner' => \App\Models\Ticket::where('category', 'Barcode Scanner')->count(),
+            'Jaringan & Internet' => \App\Models\Ticket::where('category', 'Jaringan & Internet')->count(),
+            'CCTV' => \App\Models\Ticket::where('category', 'CCTV')->count(),
+            'Software POS' => \App\Models\Ticket::where('category', 'Software POS')->count(),
+            'Server & Database' => \App\Models\Ticket::where('category', 'Server & Database')->count(),
         ];
 
         return view('admin.dashboard', [

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+    <div class="mb-4 text-sm text-gray-600">
         {{ __('Lupa kata sandi? Tidak masalah. Cukup beritahu kami alamat email Anda dan kami akan mengirimkan link reset kata sandi yang memungkinkan Anda memilih kata sandi baru.') }}
     </div>
 
@@ -17,7 +17,7 @@
         </div>
 
         <div class="flex items-center justify-between mt-4">
-            <a href="{{ route('login') }}" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+            <a href="{{ route('login') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 {{ __('Kembali ke Login') }}
             </a>
             <x-primary-button>

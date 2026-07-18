@@ -154,7 +154,7 @@ class ChatbotController extends Controller
                 . "{\n"
                 . "  \"subject\": \"Judul tiket singkat, deskriptif, dan jelas (maksimal 50 karakter)\",\n"
                 . "  \"description\": \"Penjelasan detail mengenai kendala, langkah-langkah yang telah dicoba, dan dampak masalah berdasarkan keluhan user di percakapan\",\n"
-                . "  \"category\": \"Kategori masalah (WAJIB salah satu dari: Hardware, Software, Jaringan, Akun, Lainnya)\",\n"
+                . "  \"category\": \"Kategori masalah (WAJIB salah satu dari: Hardware POS, Printer Thermal, Barcode Scanner, Jaringan & Internet, CCTV, Software POS, Server & Database)\",\n"
                 . "  \"priority\": \"Prioritas penanganan (WAJIB salah satu dari: low, medium, high berdasarkan tingkat dampak dan urgensi)\",\n"
                 . "  \"ai_summary\": \"Ringkasan masalah singkat dalam 1-2 kalimat\",\n"
                 . "  \"ai_causes\": \"Daftar kemungkinan penyebab masalah (pisahkan dengan bullet point atau baris baru)\",\n"
@@ -163,7 +163,7 @@ class ChatbotController extends Controller
                 . "}\n\n"
                 . "PENTING:\n"
                 . "1. Berikan HANYA teks JSON yang valid. Jangan sertakan pembungkus markdown ```json atau ```, dan jangan berikan penjelasan di luar JSON tersebut.\n"
-                . "2. Pilihan Kategori harus persis salah satu dari: Hardware, Software, Jaringan, Akun, Lainnya.\n"
+                . "2. Pilihan Kategori harus persis salah satu dari: Hardware POS, Printer Thermal, Barcode Scanner, Jaringan & Internet, CCTV, Software POS, Server & Database.\n"
                 . "3. Pilihan Prioritas harus persis salah satu dari: low, medium, high.\n"
                 . "4. Isi deskripsi harus ditulis dengan bahasa Indonesia yang formal, terstruktur, dan mudah dipahami oleh teknisi.";
 
@@ -227,6 +227,11 @@ class ChatbotController extends Controller
     private function generateGeminiResponse(ChatbotConversation $conversation, string $userMessage): string
     {
         try {
+            // Search Knowledge Base Internal
+            $kbService = app(\App\Services\KnowledgeBaseService::class);
+            $kbResults = $kbService->searchForChatbot($userMessage, auth()->user()->role ?? 'user');
+            $kbContext = $kbService->buildContextForAI($kbResults);
+
             $apiKey = env('OPENROUTER_API_KEY', '');
             
             if (empty($apiKey)) {
@@ -240,6 +245,10 @@ class ChatbotController extends Controller
                 . "Berikan jawaban yang akurat dan solutif. PENTING: Jawablah dengan SINGKAT, PADAT, dan LANGSUNG KE INTINYA (to-the-point). Jangan bertele-tele. "
                 . "PENTING: Jangan gunakan format Markdown apa pun (jangan gunakan simbol seperti ***, ###, atau ---). Jawab dengan teks biasa (plain text) saja."
                 . " PENTING: Jika percakapan sudah di penghujung chat tetapi masalah pengguna masih belum terselesaikan atau tidak bisa diselesaikan, Anda harus menyarankan pengguna agar membuat tiket bantuan di aplikasi ini atau menghubungi nomor teknisi di \"089688267122\".";
+
+            if (!empty($kbContext)) {
+                $systemPrompt .= "\n\n" . $kbContext;
+            }
             
             // Build conversation history from database
             // Ambil semua pesan dalam sesi secara kronologis (ASC) agar AI ingat konteks
@@ -320,6 +329,18 @@ class ChatbotController extends Controller
      */
     private function getFallbackResponse(string $message): string
     {
+        // 1. Coba cari di local knowledge base dulu sebelum general fallback!
+        try {
+            $kbService = app(\App\Services\KnowledgeBaseService::class);
+            $kbResults = $kbService->searchForChatbot($message, auth()->user()->role ?? 'user');
+            if ($kbResults->isNotEmpty()) {
+                $first = $kbResults->first();
+                return $first->content . "\n\n[Sumber: " . $first->title . "]";
+            }
+        } catch (\Exception $ex) {
+            \Illuminate\Support\Facades\Log::error('KB Fallback Error: ' . $ex->getMessage());
+        }
+
         // Use regex for more robust keyword matching
         $message = strtolower($message);
 

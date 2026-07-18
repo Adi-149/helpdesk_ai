@@ -21,7 +21,7 @@ class NotificationTest extends TestCase
         $response = $this->actingAs($user)->post(route('tickets.store'), [
             'subject' => 'AC Bocor',
             'description' => 'AC di ruang server bocor air',
-            'category' => 'Hardware',
+            'category' => 'Hardware POS',
         ]);
 
         $response->assertRedirect(route('tickets.index'));
@@ -45,7 +45,7 @@ class NotificationTest extends TestCase
             'user_id' => $user->id,
             'subject' => 'Printer Macet',
             'description' => 'Kertas menyangkut di dalam printer',
-            'category' => 'Hardware',
+            'category' => 'Hardware POS',
             'priority' => 'low',
             'status' => 'open',
         ]);
@@ -215,7 +215,7 @@ class NotificationTest extends TestCase
             'user_id' => $user->id,
             'subject' => 'Printer Macet',
             'description' => 'Kertas menyangkut',
-            'category' => 'Hardware',
+            'category' => 'Hardware POS',
             'priority' => 'low',
             'status' => 'open',
         ]);
@@ -257,7 +257,7 @@ class NotificationTest extends TestCase
             'user_id' => $user->id,
             'subject' => 'Printer Macet',
             'description' => 'Kertas menyangkut',
-            'category' => 'Hardware',
+            'category' => 'Hardware POS',
             'priority' => 'low',
             'status' => 'open',
         ]);

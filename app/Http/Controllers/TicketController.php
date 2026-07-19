@@ -161,7 +161,7 @@ class TicketController extends Controller
         $ticket = Ticket::with(['user', 'assignedSupport', 'histories.user', 'messages.user'])->findOrFail($id);
         
         $user = auth()->user();
-        if ($ticket->user_id !== $user->id && $user->role !== 'support' && $user->role !== 'admin') {
+        if ($ticket->user_id != $user->id && $user->role !== 'support' && $user->role !== 'admin') {
             abort(403, 'Anda tidak memiliki akses ke tiket ini.');
         }
 
@@ -310,7 +310,7 @@ class TicketController extends Controller
 
         $attachmentPath = null;
         if ($request->hasFile('attachment')) {
-            $attachmentPath = $request->file('attachment')->store('attachments', 'public');
+            $attachmentPath = $request->file('attachment')->store('attachments', 'public_uploads');
         }
 
         // Cek apakah data AI sudah disediakan dari Chatbot
@@ -357,7 +357,7 @@ class TicketController extends Controller
         $user = auth()->user();
 
         // Otorisasi: Hanya pembuat tiket, staff support, atau admin yang bisa berkirim pesan
-        if ($ticket->user_id !== $user->id && $user->role !== 'support' && $user->role !== 'admin') {
+        if ($ticket->user_id != $user->id && $user->role !== 'support' && $user->role !== 'admin') {
             if ($request->expectsJson()) {
                 return response()->json(['error' => 'Forbidden'], 403);
             }
@@ -385,7 +385,7 @@ class TicketController extends Controller
                 }
             }
         } else {
-            if ($ticket->user && $ticket->user_id !== $user->id) {
+            if ($ticket->user && $ticket->user_id != $user->id) {
                 $ticket->user->notify(new NewTicketMessageNotification($ticket, $msg));
             }
         }
@@ -411,7 +411,7 @@ class TicketController extends Controller
         $user   = auth()->user();
 
         // Otorisasi
-        if ($ticket->user_id !== $user->id && $user->role !== 'support' && $user->role !== 'admin') {
+        if ($ticket->user_id != $user->id && $user->role !== 'support' && $user->role !== 'admin') {
             return response()->json(['error' => 'Forbidden'], 403);
         }
 
@@ -440,7 +440,7 @@ class TicketController extends Controller
         $user = auth()->user();
 
         // Otorisasi: Hanya pembuat tiket (user) atau admin yang bisa mengonfirmasi/menutup tiket
-        if ($ticket->user_id !== $user->id && $user->role !== 'admin') {
+        if ($ticket->user_id != $user->id && $user->role !== 'admin') {
             abort(403, 'Anda tidak memiliki akses untuk menutup tiket ini.');
         }
 
@@ -483,7 +483,7 @@ class TicketController extends Controller
         $user = auth()->user();
 
         // Otorisasi: Hanya pembuat tiket atau admin yang bisa membuka kembali tiket
-        if ($ticket->user_id !== $user->id && $user->role !== 'admin') {
+        if ($ticket->user_id != $user->id && $user->role !== 'admin') {
             abort(403, 'Anda tidak memiliki akses untuk membuka kembali tiket ini.');
         }
 

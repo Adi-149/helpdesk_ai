@@ -96,7 +96,11 @@
                         <div class="mb-6 border-t pt-6">
                             <h4 class="text-lg font-medium text-gray-900 mb-2">Lampiran Foto</h4>
                             <div class="max-w-md rounded overflow-hidden shadow-sm border border-gray-200 bg-gray-50 p-2">
-                                <img src="{{ asset('storage/' . $ticket->attachment) }}" alt="Lampiran Foto Tiket" class="w-full h-auto rounded object-cover max-h-[400px]">
+                                @php
+                                    // Deteksi path lama (storage/) vs path baru (uploads/)
+                                    $attachmentUrl = asset('uploads/' . $ticket->attachment);
+                                @endphp
+                                <img src="{{ $attachmentUrl }}" alt="Lampiran Foto Tiket" class="w-full h-auto rounded object-cover max-h-[400px]">
                             </div>
                         </div>
                     @endif

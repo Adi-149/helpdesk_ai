@@ -44,6 +44,16 @@ return [
             'throw' => false,
         ],
 
+        // Disk untuk shared hosting yang tidak mendukung symlink.
+        // File disimpan langsung di public/uploads/ dan bisa diakses via URL.
+        'public_uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+            'url' => env('APP_URL').'/uploads',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -49,7 +49,12 @@ return [
         'public_uploads' => [
             'driver' => 'local',
             'root' => (function() {
-                // Deteksi jika dideploy di cPanel dengan folder public_html
+                // Jalur cPanel kustom: /home/username/public_html/helpdesksunandrajat
+                $customPath = base_path('../../public_html/helpdesksunandrajat/uploads');
+                if (file_exists(base_path('../../public_html/helpdesksunandrajat'))) {
+                    return $customPath;
+                }
+                // Jalur cPanel standar: /home/username/public_html
                 if (file_exists(base_path('../public_html'))) {
                     return base_path('../public_html/uploads');
                 }

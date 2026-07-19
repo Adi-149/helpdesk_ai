@@ -48,7 +48,16 @@ return [
         // File disimpan langsung di public/uploads/ dan bisa diakses via URL.
         'public_uploads' => [
             'driver' => 'local',
-            'root' => public_path('uploads'),
+            'root' => (function() {
+                // Deteksi jika dideploy di cPanel dengan folder public_html
+                if (file_exists(base_path('../public_html'))) {
+                    return base_path('../public_html/uploads');
+                }
+                if (file_exists(base_path('public_html'))) {
+                    return base_path('public_html/uploads');
+                }
+                return public_path('uploads');
+            })(),
             'url' => env('APP_URL').'/uploads',
             'visibility' => 'public',
             'throw' => false,

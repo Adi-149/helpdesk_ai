@@ -45,24 +45,11 @@ return [
         ],
 
         // Disk untuk shared hosting yang tidak mendukung symlink.
-        // File disimpan langsung di public/uploads/ dan bisa diakses via URL.
+        // Atur path upload di .env dengan variabel UPLOAD_PATH
+        // Contoh di server: UPLOAD_PATH=/home/username/public_html/helpdesksunandrajat/uploads
         'public_uploads' => [
             'driver' => 'local',
-            'root' => (function() {
-                // Jalur cPanel kustom: /home/username/public_html/helpdesksunandrajat
-                $customPath = base_path('../../public_html/helpdesksunandrajat/uploads');
-                if (file_exists(base_path('../../public_html/helpdesksunandrajat'))) {
-                    return $customPath;
-                }
-                // Jalur cPanel standar: /home/username/public_html
-                if (file_exists(base_path('../public_html'))) {
-                    return base_path('../public_html/uploads');
-                }
-                if (file_exists(base_path('public_html'))) {
-                    return base_path('public_html/uploads');
-                }
-                return public_path('uploads');
-            })(),
+            'root' => env('UPLOAD_PATH', public_path('uploads')),
             'url' => env('APP_URL').'/uploads',
             'visibility' => 'public',
             'throw' => false,

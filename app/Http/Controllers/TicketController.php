@@ -356,9 +356,11 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
         $user = auth()->user();
 
+        $isJsonRequest = $request->expectsJson() || $request->ajax() || $request->wantsJson();
+
         // Otorisasi: Hanya pembuat tiket, staff support, atau admin yang bisa berkirim pesan
         if ($ticket->user_id != $user->id && $user->role !== 'support' && $user->role !== 'admin') {
-            if ($request->expectsJson()) {
+            if ($isJsonRequest) {
                 return response()->json(['error' => 'Forbidden'], 403);
             }
             abort(403, 'Anda tidak memiliki akses ke tiket ini.');
@@ -390,7 +392,7 @@ class TicketController extends Controller
             }
         }
 
-        if ($request->expectsJson()) {
+        if ($isJsonRequest) {
             return response()->json([
                 'id'          => $msg->id,
                 'message'     => $msg->message,

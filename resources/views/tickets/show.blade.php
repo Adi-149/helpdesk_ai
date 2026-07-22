@@ -338,9 +338,12 @@
                                 // Append the new message to chat box and update lastMessageId
                                 appendMessage(data);
                                 lastMessageId = Math.max(lastMessageId, data.id);
-                                chatForm.message.value = '';
+                                const inputEl = document.getElementById('chat-message-input');
+                                if (inputEl) {
+                                    inputEl.value = '';
+                                }
                             } catch (err) {
-                                // console.error(err);
+                                console.error('Error sending message:', err);
                             }
                         });
 
@@ -404,9 +407,11 @@
                             timeDiv.textContent = msg.created_at;
                             bubble.appendChild(timeDiv);
                             container.appendChild(bubble);
-                            chatBox.appendChild(container);
-                            // Scroll to bottom
-                            chatBox.scrollTop = chatBox.scrollHeight;
+                            if (chatBox) {
+                                chatBox.appendChild(container);
+                                // Scroll to bottom
+                                chatBox.scrollTop = chatBox.scrollHeight;
+                            }
                         }
 
                         // Initialize polling

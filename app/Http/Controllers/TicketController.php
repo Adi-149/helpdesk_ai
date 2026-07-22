@@ -177,6 +177,12 @@ class TicketController extends Controller
             $ticket->refresh();
         }
 
+        // Cari tiket serupa untuk teknisi dan admin
+        $similarTickets = [];
+        if ($user->role === 'support' || $user->role === 'admin') {
+            $similarTickets = $this->findSimilarTickets($ticket);
+        }
+
         $supportUsers = [];
         if ($user->role === 'admin') {
             $supportUsers = User::where('role', 'support')->orderBy('name')->get();

@@ -177,13 +177,12 @@ class TicketController extends Controller
             $ticket->refresh();
         }
 
-        // Cari tiket serupa untuk teknisi dan admin
-        $similarTickets = [];
-        if ($user->role === 'support' || $user->role === 'admin') {
-            $similarTickets = $this->findSimilarTickets($ticket);
+        $supportUsers = [];
+        if ($user->role === 'admin') {
+            $supportUsers = User::where('role', 'support')->orderBy('name')->get();
         }
 
-        return view('tickets.show', compact('ticket', 'similarTickets'));
+        return view('tickets.show', compact('ticket', 'similarTickets', 'supportUsers'));
     }
 
     public function update(Request $request, $id)
@@ -196,8 +195,14 @@ class TicketController extends Controller
             'assigned_to' => [
                 'nullable',
                 function ($attribute, $value, $fail) use ($ticket) {
-                    if ($value != auth()->id() && $value != $ticket->assigned_to && !empty($value)) {
+                    if (auth()->user()->role !== 'admin' && $value != auth()->id() && $value != $ticket->assigned_to && !empty($value)) {
                         $fail('Anda hanya dapat menugaskan tiket ini ke diri Anda sendiri.');
+                    }
+                    if (auth()->user()->role === 'admin' && !empty($value)) {
+                        $userExists = \App\Models\User::where('id', $value)->where('role', 'support')->exists();
+                        if (!$userExists) {
+                            $fail('User yang ditugaskan harus memiliki role support.');
+                        }
                     }
                 }
             ],
@@ -210,8 +215,9 @@ class TicketController extends Controller
 
         $ticket->status = $request->status;
         $ticket->priority = $request->priority;
-        if ($request->assigned_to) {
-            $ticket->assigned_to = $request->assigned_to;
+        
+        if ($request->has('assigned_to')) {
+            $ticket->assigned_to = $request->assigned_to ?: null;
         }
 
         // Jalankan ringkasan penyelesaian otomatis jika status diselesaikan/ditutup dan belum ada

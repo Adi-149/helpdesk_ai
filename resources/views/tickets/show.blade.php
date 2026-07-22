@@ -146,7 +146,7 @@
                         @endif
                     @endif
 
-                    @if(auth()->user()->role === 'support')
+                    @if(auth()->user()->role === 'support' || auth()->user()->role === 'admin')
                         <div class="border-t pt-6">
                             <h4 class="text-lg font-medium text-gray-900 mb-4">Perbarui Status</h4>
 
@@ -177,9 +177,17 @@
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Ditangani oleh</label>
                                     <select name="assigned_to" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white">
                                         <option value="">-- Pilih Support Staff --</option>
-                                        <option value="{{ auth()->id() }}" {{ $ticket->assigned_to === auth()->id() ? 'selected' : '' }}>{{ auth()->user()->name }} (Saya)</option>
-                                        @if($ticket->assigned_to && $ticket->assigned_to !== auth()->id() && $ticket->assignedSupport)
-                                            <option value="{{ $ticket->assigned_to }}" selected>{{ $ticket->assignedSupport->name }}</option>
+                                        @if(auth()->user()->role === 'admin')
+                                            @foreach($supportUsers as $support)
+                                                <option value="{{ $support->id }}" {{ $ticket->assigned_to === $support->id ? 'selected' : '' }}>
+                                                    {{ $support->name }}
+                                                </option>
+                                            @endforeach
+                                        @else
+                                            <option value="{{ auth()->id() }}" {{ $ticket->assigned_to === auth()->id() ? 'selected' : '' }}>{{ auth()->user()->name }} (Saya)</option>
+                                            @if($ticket->assigned_to && $ticket->assigned_to !== auth()->id() && $ticket->assignedSupport)
+                                                <option value="{{ $ticket->assigned_to }}" selected>{{ $ticket->assignedSupport->name }}</option>
+                                            @endif
                                         @endif
                                     </select>
                                 </div>

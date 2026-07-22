@@ -15,7 +15,7 @@ class IsSupport
      */
     public function handle($request, Closure $next)
 {
-    if (auth()->user()->role !== 'support') {
+    if (auth()->user()->role !== 'support' && auth()->user()->role !== 'admin') {
         abort(403);
     }
 

@@ -207,7 +207,10 @@
         const desktopBadge = document.getElementById('nav-notification-badge');
         const mobileBadge = document.getElementById('mobile-notification-badge');
         const notificationList = document.getElementById('nav-notification-list');
-        let pollingInterval = null;
+        // Request Notification permission
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
 
         async function fetchNotifications() {
             try {
@@ -220,6 +223,33 @@
                 if (!response.ok) return;
 
                 const data = await response.json();
+
+                // Native Browser Notifications
+                if ('Notification' in window && Notification.permission === 'granted') {
+                    let storedNotifiedIds = [];
+                    const isFirstRun = localStorage.getItem('notified_ids') === null;
+                    try {
+                        storedNotifiedIds = JSON.parse(localStorage.getItem('notified_ids') || '[]');
+                    } catch(e) {}
+
+                    let currentIds = [];
+                    data.notifications.forEach(notif => {
+                        currentIds.push(notif.id);
+                        if (!isFirstRun && !storedNotifiedIds.includes(notif.id)) {
+                            const message = notif.data.message || 'Ada notifikasi baru';
+                            const browserNotification = new Notification('Helpdesk AI', {
+                                body: message,
+                                tag: notif.id
+                            });
+                            browserNotification.onclick = function() {
+                                window.focus();
+                                window.location.href = `/notifications/${notif.id}/click`;
+                            };
+                        }
+                    });
+                    localStorage.setItem('notified_ids', JSON.stringify(currentIds));
+                }
+
                 updateNotificationBadge(data.unread_count);
                 updateNotificationList(data.notifications);
             } catch (error) {

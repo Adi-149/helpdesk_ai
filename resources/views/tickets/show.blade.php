@@ -240,7 +240,7 @@
                     </h4>
 
                     <!-- Box Pesan Chat -->
-                    <div class="border border-gray-200 rounded-lg bg-gray-100/50 p-4 mb-4 max-h-[400px] overflow-y-auto space-y-4">
+                    <div id="chat-box" class="border border-gray-200 rounded-lg bg-gray-100/50 p-4 mb-4 max-h-[400px] overflow-y-auto space-y-4">
                         @forelse($ticket->messages->sortBy('created_at') as $message)
                             @php
                                 $isOwnMessage = $message->user_id === auth()->id();
@@ -307,7 +307,12 @@
 
                     <script>
                         const chatForm = document.getElementById('chat-form');
-                        const chatBox = document.querySelector('.border.rounded-lg.bg-gray-50');
+                        const chatBox = document.getElementById('chat-box');
+                        
+                        // Scroll to bottom on load
+                        if (chatBox) {
+                            chatBox.scrollTop = chatBox.scrollHeight;
+                        }
                         // Initialize with latest known message ID to avoid duplicates
                         let lastMessageId = {{ $ticket->messages->max('id') ?? 0 }};
 

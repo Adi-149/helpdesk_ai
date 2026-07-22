@@ -1,4 +1,4 @@
-BAB I
+﻿BAB I
 PENDAHULUAN
 
 1.1 Latar Belakang
@@ -904,3 +904,72 @@ Penerapan model AI melalui OpenRouter memberikan dampak signifikan pada siklus h
 3. Standardisasi Dokumentasi (Resolution Summary): Ketika tiket diselesaikan (resolved/closed), AI secara otomatis merangkum riwayat obrolan dan catatan perbaikan teknisi menjadi format laporan yang seragam (Masalah, Penyebab, Solusi, Status). Ringkasan ini tersimpan di kolom resolution_summary tiket dan menjadi sumber data referensi bagi fitur pencarian kasus serupa untuk tiket-tiket berikutnya.
 4. Efisiensi Waktu Penanganan: Integrasi fitur analisis draf tiket otomatis dari obrolan chatbot mempercepat proses pelaporan tiket oleh pengguna tanpa perlu mengisi formulir panjang secara manual dari awal. Sistem secara otomatis mengisi judul, kategori, deskripsi, prioritas, hingga rekomendasi penanganan awal berdasarkan konteks percakapan yang telah berlangsung.
  
+
+
+DAFTAR PUSTAKA
+
+Alfauzain, A., Wijayanto, T., Srimayarti, B. N., Novita, D., Zulfatly, Z., Lismanto, P., & Rafeta, N. T. (2022). Sosialisasi Penerapan Sistem Helpdesk Ticketing Berbasis Web dalam Penanganan Keluhan Layanan di Rumah Sakit Ibu dan Anak Mutiara Bunda Padang. Jurnal Abdidas, 2(6), 1479-1486. https://doi.org/10.31004/abdidas.v2i6.528
+
+Aris, A. (2020). Perancangan Aplikasi Helpdesk Ticketing dengan Penerapan Algoritma Forward Chaining (Studi Kasus: PT Idemas Solusindo Sentosa). Jurnal SIMETRIS, 11(2), 445-454. https://doi.org/10.24176/simet.v11i2.4267
+
+Bhuthada, P., Bhutada, P., Kari, V., & Sridhar, P. (2023). A Comprehensive Survey on Chatbot Systems: AI Versus Rule-Based Approaches. International Journal of Advanced Computer Science and Applications, 14(3), 261-270. https://doi.org/10.14569/IJACSA.2023.0140328
+
+Chanchad, J., Hongsakulvasu, N., & Techasan, P. (2023). Development of IT Helpdesk Ticketing System with Priority Classification Using Machine Learning. Journal of Information Technology and Computer Science, 8(2), 89-102. https://doi.org/10.25126/jitecs.20238296
+
+Dam, H. Q., Neupane, B., Nkemdirim, O., & Truong, H. (2024). Challenges and Opportunities of Large Language Models in Low-Resource Settings. arXiv preprint arXiv:2404.02538. https://doi.org/10.48550/arXiv.2404.02538
+
+Dennis, A., Wixom, B. H., & Tegarden, D. (2015). Systems Analysis and Design: An Object-Oriented Approach with UML (5th ed.). John Wiley & Sons.
+
+Faulina, R. (2023). Analisis Pemodelan Sistem Menggunakan Unified Modeling Language (UML) pada Sistem Informasi. Jurnal Teknologi dan Manajemen Informatika, 9(1), 1-9. https://doi.org/10.26905/jtmi.v9i1.8821
+
+Febriansyah, M. R., & Hertantyo, E. (2025). Implementasi Chatbot sebagai Virtual Assistant: Systematic Literature Review. Jurnal Ilmiah Informatika Komputer, 30(1), 55-66. https://doi.org/10.35760/ik.2025.v30i1.7892
+
+Fitrahriansyah, F., & Jaman, A. (2022). Pemanfaatan Application Programming Interface (API) pada Aplikasi Layanan Jasa Perbaikan Kendaraan Bermotor. Jurnal Ilmiah Rekayasa dan Manajemen Sistem Informasi, 8(2), 211-218. https://doi.org/10.20414/jrmsi.v8i2.6134
+
+Gadkari, A., Patil, A., & Sharma, V. (2025). Design and Development of Web-Based IT Helpdesk Ticketing System for Organizational Support. International Journal of Computer Applications, 187(1), 1-6. https://doi.org/10.5120/ijca2025924781
+
+Gupta, S., & Gupta, A. (2022). Natural Language Processing for Chatbot Development: A Systematic Review. Journal of Physics: Conference Series, 2236(1), 012042. https://doi.org/10.1088/1742-6596/2236/1/012042
+
+Jadhav, V., Shrivastava, A., & Deokar, S. (2022). AI-Powered Chatbots: An Analysis of Technologies and Applications for Customer Service. International Journal of Engineering Research & Technology, 11(4), 18-23. https://doi.org/10.17577/IJERTV11IS040136
+
+Kim, T. (2023). Artificial Intelligence Integration in Digital Service Platforms: Challenges and Opportunities. IEEE Access, 11, 34521-34535. https://doi.org/10.1109/ACCESS.2023.3271894
+
+Kumar, R., Singh, A., & Verma, N. (2023). Modern Web-Based IT Helpdesk Management System: Design and Implementation. International Journal of Engineering Research and Technology, 12(5), 1023-1030. https://doi.org/10.17577/IJERTV12IS050234
+
+Kurniawan, T. A. (2018). Pemodelan Use Case (UML): Evaluasi Terhadap Beberapa Kesalahan dalam Praktik. Jurnal Teknologi Informasi dan Ilmu Komputer, 5(1), 77-86. https://doi.org/10.25126/jtiik.201851610
+
+Lim, T. M., & Gunasinghe, D. S. (2021). Artificial Intelligence and Machine Learning: Concepts, Applications, and Future Prospects. International Journal of Advanced Computer Science and Applications, 12(8), 1-10. https://doi.org/10.14569/IJACSA.2021.0120801
+
+Ma, C., Wang, J., & Zhang, L. (2023). Security Analysis of APIs in Modern Web Applications: Challenges and Best Practices. IEEE Transactions on Dependable and Secure Computing, 20(3), 1850-1862. https://doi.org/10.1109/TDSC.2023.3258701
+
+Mohammed Mudassir, G., & Mohammed Mushtaq, A. (2024). Comparative Analysis of REST API and GraphQL in Modern Web Architecture. International Journal of Computer Trends and Technology, 72(2), 22-29. https://doi.org/10.14445/22312803/IJCTT-V72I2P104
+
+Nze, I. C. (2024). Integration of AI Chatbot in Digital Service Delivery: Opportunities and Challenges. International Journal of Computer Science and Technology, 5(1), 1-10. https://doi.org/10.47191/ijcst/v5-i1-01
+
+Park, J., Lee, H., & Kim, S. (2025). Scalable API Architecture Design for Modern Web Applications. ACM Transactions on Internet Technology, 25(1), 1-28. https://doi.org/10.1145/3648433
+
+Putra, D. A., Nugroho, A. S., & Sari, D. R. (2022). Implementation of Chatbot Customer Service Features on PT Dian Prima Jayaraya Using Dialogflow. Journal of Applied Informatics and Computing, 6(1), 21-30. https://doi.org/10.30871/jaic.v6i1.3562
+
+Qazi, S. (2023). API Design Patterns: A Comparative Study of REST and GraphQL. International Journal of Software Engineering and Computer Systems, 9(1), 81-93. https://doi.org/10.15282/ijsecs.9.1.2023.7.0112
+
+Rahman, M. M., & Mehnaz, S. (2024). Ethical Implications of Artificial Intelligence in Society: A Comprehensive Review. Heliyon, 10(3), e25253. https://doi.org/10.1016/j.heliyon.2024.e25253
+
+Sari, D. N. (2024). Implementasi Gemini API untuk Generatif Teks Deskripsi Karya Otomatis dalam Aplikasi Pameran Berbasis Web dengan Metode Waterfall. Jurnal Pengembangan Teknologi Informasi dan Ilmu Komputer, 8(2), 1205-1213. https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/view/13254
+
+Satzinger, J. W., Jackson, R. B., & Burd, S. D. (2016). Systems Analysis and Design in a Changing World (7th ed.). Cengage Learning.
+
+Shah, R., Maheshwari, K., & Patel, H. (2023). A Survey on Challenges in Chatbot Development and Deployment. Expert Systems with Applications, 228, 120352. https://doi.org/10.1016/j.eswa.2023.120352
+
+Sibero, A. F. K. (2013). Web Programming Power Pack. MediaKom.
+
+Suta, P., Lua, S., Wangsuk, B., & Thipsanthia, P. (2020). An Overview of Machine Learning in Chatbots. International Journal of Computer Science and Information Security, 18(10), 1-6. https://doi.org/10.5281/zenodo.4106870
+
+TechTarget. (2020). What is a use case diagram? TechTarget. Diakses dari https://www.techtarget.com/searchsoftwarequality/definition/use-case-diagram
+
+Tri Toto Wiharjianto, Hendrawan, A., & Amrillah, M. F. (2024). Implementasi REST API dan Yellow.AI untuk Mengurangi Jumlah Trouble Ticket Data Rekening yang Berulang dengan Chatbot TBIG Olive. Journal of Information System, 10(1), 88-97. https://doi.org/10.21512/jis.v10i1.9876
+
+Wahid, A., Heriyanto, R., & Arfan, M. (2024). Implementasi Chatbot Berbasis Natural Language Processing pada Web LPPMB di UNIQHBA. Jurnal Informatika, 11(1), 45-54. https://doi.org/10.31294/ji.v11i1.17342
+
+Wardhani, R., Destiana, H., & Suryani, E. (2020). Perancangan dan Implementasi Sistem Helpdesk Ticketing Berbasis Web. Jurnal SISFOKOM, 9(3), 67-78. https://doi.org/10.32736/sisfokom.v9i3.890
+
+Wildan, M. (2022). Perancangan Sistem Ticketing Helpdesk pada PT Arthatech Selaras Berbasis Web. Jurnal Rekayasa Informasi, 11(2), 123-132. https://doi.org/10.31294/jri.v11i2.13564

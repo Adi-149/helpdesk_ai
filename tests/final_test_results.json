@@ -1,0 +1,302 @@
+[
+    {
+        "id": "C01",
+        "category": "Hardware POS",
+        "pesan": "POS terminal does not power on after the power button is pressed.",
+        "subject": "POS terminal tidak dapat menyala",
+        "priority": "High",
+        "manual": 68,
+        "ai": 32,
+        "pesan_balasan": "Pastikan kabel power terminal POS terpasang dengan baik dan periksa apakah ada indikator lampu yang menyala. Jika tidak ada lampu yang menyala, coba gunakan soket listrik yang berbeda atau periksa apakah ada masalah dengan sumber listrik. Jika masalah masih berlanjut, hubungi teknisi di \"089688267122\". \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C02",
+        "category": "Hardware POS",
+        "pesan": "POS terminal suddenly shuts down during a sales transaction.",
+        "subject": "POS terminal mati mendadak saat transaksi",
+        "priority": "High",
+        "manual": 62,
+        "ai": 29,
+        "pesan_balasan": "Langkah penanganan untuk POS terminal yang mati mendadak saat transaksi:\n\n1. Periksa kabel power dan pastikan terhubung dengan baik.\n2. Cek sisa memori\/storage pada komputer kasir. Jika penuh, hapus file cache temporary.\n3. Pastikan aplikasi POS diperbarui ke versi terbaru.\n4. Jika masalah berlanjut, restart komputer kasir dan coba lagi.\n5. Jika masih terjadi, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\nJika belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. [Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C03",
+        "category": "Hardware POS",
+        "pesan": "POS touchscreen is on but does not respond to touch input.",
+        "subject": "POS touchscreen tidak merespons sentuhan",
+        "priority": "High",
+        "manual": 71,
+        "ai": 34,
+        "pesan_balasan": "Coba langkah-langkah berikut untuk mengatasi masalah touchscreen POS yang tidak merespons:\n\n1. Restart perangkat POS dengan mematikan dan menyalakannya kembali.\n2. Periksa kabel koneksi touchscreen, pastikan tidak ada yang longgar atau putus.\n3. Jika masih tidak merespons, coba gunakan mouse untuk mengakses aplikasi POS dan periksa pengaturan touchscreen di dalam sistem.\n4. Jika masalah berlanjut, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\nJika semua langkah di atas tidak berhasil, silakan buat tiket bantuan atau hubungi teknisi di \"089688267122\". \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C04",
+        "category": "Hardware POS",
+        "pesan": "POS terminal frequently freezes while cashier is entering transactions.",
+        "subject": "POS terminal sering freeze saat input transaksi",
+        "priority": "High",
+        "manual": 65,
+        "ai": 31,
+        "pesan_balasan": "Jika aplikasi POS sering freeze, lakukan langkah-langkah berikut:\n\n1. Buka Task Manager dengan menekan Ctrl + Shift + Esc, pilih aplikasi POS, lalu klik 'End Task'. Buka kembali aplikasi POS.\n2. Pastikan PC kasir terhubung ke jaringan LAN dan server database. Cek dengan ping ke server 192.168.10.10.\n3. Periksa sisa memori\/storage pada komputer kasir. Hapus file cache temporary jika storage penuh.\n4. Jika masalah berlanjut, restart service database lokal di kasir.\n5. Jika masih tidak teratasi, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C05",
+        "category": "Printer Thermal",
+        "pesan": "Thermal printer is detected but does not print the receipt.",
+        "subject": "Printer thermal terdeteksi tetapi tidak mencetak struk",
+        "priority": "High",
+        "manual": 59,
+        "ai": 28,
+        "pesan_balasan": "Langkah-langkah untuk mengatasi masalah printer thermal yang terdeteksi tetapi tidak mencetak:\n\n1. Pastikan kabel power printer terpasang dengan baik dan tombol power menyala (lampu biru\/hijau).\n2. Cek lampu indikator 'Error' atau 'Paper Out'. Jika lampu merah berkedip, isi ulang kertas thermal baru secara presisi.\n3. Periksa koneksi kabel USB dari printer ke komputer kasir. Coba pindahkan ke port USB lain.\n4. Buka Control Panel -> Devices and Printers di Windows kasir, pastikan status printer EPSON TM-T82X adalah 'Ready' (bukan 'Offline').\n5. Jika status offline, klik kanan -> lihat antrean cetak -> klik 'Printer' -> hilangkan centang 'Use Printer Offline'.\n6. Jika masih gagal, lakukan restart komputer kasir dan printer.\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: SOP Printer Thermal Tidak Mencetak]"
+    },
+    {
+        "id": "C06",
+        "category": "Printer Thermal",
+        "pesan": "Receipt prints blank although thermal paper is installed correctly.",
+        "subject": "Struk tercetak kosong padahal kertas thermal terpasang benar",
+        "priority": "High",
+        "manual": 63,
+        "ai": 30,
+        "pesan_balasan": "Langkah penanganan untuk masalah printer thermal yang mencetak struk kosong:\n\n1. Pastikan kabel power printer terpasang dengan baik dan tombol power menyala (lampu biru\/hijau).\n2. Cek lampu indikator 'Error' atau 'Paper Out'. Jika lampu merah berkedip, pastikan kertas thermal terpasang dengan benar.\n3. Periksa koneksi kabel USB dari printer ke komputer kasir. Coba pindahkan ke port USB lain.\n4. Buka Control Panel -> Devices and Printers di Windows kasir, pastikan status printer EPSON TM-T82X adalah 'Ready' (bukan 'Offline').\n5. Jika status offline, klik kanan -> lihat antrean cetak -> klik 'Printer' -> hilangkan centang 'Use Printer Offline'.\n6. Jika masih gagal, lakukan restart komputer kasir dan printer.\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. [Sumber: SOP Printer Thermal Tidak Mencetak]"
+    },
+    {
+        "id": "C07",
+        "category": "Printer Thermal",
+        "pesan": "Thermal printer repeatedly shows paper error although paper is available.",
+        "subject": "Printer thermal terus muncul paper error padahal kertas ada",
+        "priority": "High",
+        "manual": 67,
+        "ai": 33,
+        "pesan_balasan": "Coba langkah-langkah berikut untuk mengatasi masalah printer thermal yang terus muncul error kertas:\n\n1. Periksa apakah kertas thermal terpasang dengan benar dan tidak terlipat.\n2. Cek lampu indikator 'Error' pada printer. Jika lampu merah berkedip, pastikan kertas thermal yang digunakan sesuai dan terpasang dengan baik.\n3. Coba buka dan tutup kembali penutup printer untuk memastikan sensor kertas berfungsi.\n4. Jika masih muncul error, bersihkan sensor kertas dari debu atau kotoran yang mungkin menghalangi.\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: SOP Printer Thermal Tidak Mencetak]"
+    },
+    {
+        "id": "C08",
+        "category": "Printer Thermal",
+        "pesan": "Receipt printing stops in the middle and the printer becomes unresponsive.",
+        "subject": "Cetak struk terhenti di tengah dan printer tidak merespons",
+        "priority": "High",
+        "manual": 70,
+        "ai": 35,
+        "pesan_balasan": "Langkah-langkah yang dapat Anda lakukan untuk mengatasi masalah printer thermal yang tidak merespons:\n\n1. Pastikan kabel power printer terpasang dengan baik dan tombol power menyala (lampu biru\/hijau).\n2. Cek lampu indikator 'Error' atau 'Paper Out'. Jika lampu merah berkedip, isi ulang kertas thermal baru secara presisi.\n3. Periksa koneksi kabel USB dari printer ke komputer kasir. Coba pindahkan ke port USB lain.\n4. Buka Control Panel -> Devices and Printers di Windows kasir, pastikan status printer EPSON TM-T82X adalah 'Ready' (bukan 'Offline').\n5. Jika status offline, klik kanan -> lihat antrean cetak -> klik 'Printer' -> hilangkan centang 'Use Printer Offline'.\n6. Jika masih gagal, lakukan restart komputer kasir dan printer.\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. [Sumber: SOP Printer Thermal Tidak Mencetak]"
+    },
+    {
+        "id": "C09",
+        "category": "Barcode Scanner",
+        "pesan": "Barcode scanner is connected but does not read any barcode.",
+        "subject": "Barcode scanner terhubung tetapi tidak membaca barcode",
+        "priority": "High",
+        "manual": 64,
+        "ai": 30,
+        "pesan_balasan": "Langkah-langkah untuk mengatasi masalah barcode scanner yang tidak membaca barcode:\n\n1. Pastikan lampu laser scanner menyala saat pelatuk ditekan.\n2. Jika laser tidak menyala, cek kabel USB scanner di komputer kasir, pastikan tidak longgar.\n3. Bersihkan lensa kaca scanner dari debu atau sidik jari menggunakan kain bersih.\n4. Coba scan kode barcode ke aplikasi Notepad untuk melihat apakah angka barcode muncul. Jika tidak muncul angka, berarti scanner tidak terdeteksi sebagai input keyboard. Lakukan reset scanner dengan membaca barcode panduan bawaan.\n5. Jika masih tidak merespon, hubungi Tim IT Support (Fajar).\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. [Sumber: SOP Barcode Scanner Tidak Terbaca]"
+    },
+    {
+        "id": "C10",
+        "category": "Barcode Scanner",
+        "pesan": "Barcode scanner reads some products but repeatedly fails on valid barcodes.",
+        "subject": "Barcode scanner membaca sebagian produk tetapi gagal pada barcode valid",
+        "priority": "High",
+        "manual": 61,
+        "ai": 28,
+        "pesan_balasan": "Langkah penanganan untuk masalah barcode scanner yang tidak membaca barcode valid:\n\n1. Pastikan lampu laser scanner menyala saat pelatuk ditekan.\n2. Cek kabel USB scanner di komputer kasir, pastikan tidak longgar.\n3. Bersihkan lensa kaca scanner dari debu atau sidik jari menggunakan kain bersih.\n4. Coba scan kode barcode yang bermasalah ke aplikasi Notepad untuk melihat apakah angka barcode muncul. Jika tidak muncul, berarti scanner tidak terdeteksi sebagai input keyboard. Lakukan reset scanner dengan membaca barcode panduan bawaan.\n5. Jika masalah masih berlanjut, hubungi Tim IT Support (Fajar).\n\nJika belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di \"089688267122\". [Sumber: SOP Barcode Scanner Tidak Terbaca]"
+    },
+    {
+        "id": "C11",
+        "category": "Barcode Scanner",
+        "pesan": "Barcode scanner produces incorrect characters in the POS input field.",
+        "subject": "Barcode scanner menghasilkan karakter salah pada input POS",
+        "priority": "High",
+        "manual": 66,
+        "ai": 31,
+        "pesan_balasan": "Langkah penanganan untuk masalah barcode scanner yang menghasilkan karakter salah di input POS:\n\n1. Pastikan lampu laser scanner menyala saat pelatuk ditekan.\n2. Jika laser tidak menyala, cek kabel USB scanner di komputer kasir, pastikan tidak longgar.\n3. Bersihkan lensa kaca scanner dari debu atau sidik jari menggunakan kain bersih.\n4. Coba scan kode barcode ke aplikasi Notepad untuk melihat apakah angka barcode muncul dengan benar. Jika tidak, berarti scanner tidak terdeteksi sebagai input keyboard. Lakukan reset scanner dengan membaca barcode panduan bawaan.\n5. Jika masalah masih berlanjut, hubungi Tim IT Support (Fajar) untuk bantuan lebih lanjut.\n\n[Sumber: SOP Barcode Scanner Tidak Terbaca]"
+    },
+    {
+        "id": "C12",
+        "category": "Barcode Scanner",
+        "pesan": "Barcode scanner is not detected by the POS terminal after reconnection.",
+        "subject": "Barcode scanner tidak terdeteksi POS setelah dipasang ulang",
+        "priority": "High",
+        "manual": 69,
+        "ai": 33,
+        "pesan_balasan": "Langkah penanganan untuk masalah barcode scanner yang tidak terdeteksi:\n\n1. Pastikan lampu laser scanner menyala saat pelatuk ditekan.\n2. Jika laser tidak menyala, cek kabel USB scanner di komputer kasir, pastikan tidak longgar.\n3. Bersihkan lensa kaca scanner dari debu atau sidik jari menggunakan kain bersih.\n4. Coba scan kode barcode ke aplikasi Notepad untuk melihat apakah angka barcode muncul. Jika tidak muncul angka, berarti scanner tidak terdeteksi sebagai input keyboard (lakukan reset scanner dengan membaca barcode panduan bawaan).\n5. Jika scanner masih tidak merespon, hubungi Tim IT Support (Fajar).\n\n[Sumber: SOP Barcode Scanner Tidak Terbaca]"
+    },
+    {
+        "id": "C13",
+        "category": "Jaringan & Internet",
+        "pesan": "POS computer is connected to Wi-Fi\/LAN but cannot access the internet.",
+        "subject": "Komputer POS terhubung LAN\/Wi-Fi tetapi tidak bisa akses internet",
+        "priority": "High",
+        "manual": 72,
+        "ai": 34,
+        "pesan_balasan": "Langkah penanganan untuk masalah ini adalah sebagai berikut:\n\n1. Periksa lampu indikator pada Router\/Switch. Jika indikator merah atau mati, periksa adaptor power.\n2. Coba ping ke gateway lokal (misalnya 192.168.1.1) untuk memastikan koneksi lokal.\n3. Lakukan ping ke DNS Google (8.8.8.8) untuk memastikan koneksi ke luar.\n4. Jika hanya satu perangkat yang tidak bisa akses internet, cek kabel LAN atau modul Wi-Fi perangkat tersebut.\n5. Jika masalah terjadi di satu area atau gedung, laporkan segera ke Tim Network IT di 089688267122 untuk cek jalur fiber optic atau konfigurasi switch distribusi.\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi. [Sumber: SOP Internet Mati]"
+    },
+    {
+        "id": "C14",
+        "category": "Jaringan & Internet",
+        "pesan": "Internet connection is very slow and disrupts online POS synchronization.",
+        "subject": "Koneksi internet lambat mengganggu sinkronisasi POS online",
+        "priority": "High",
+        "manual": 60,
+        "ai": 29,
+        "pesan_balasan": "Langkah penanganan untuk koneksi internet lambat:\n\n1. Periksa lampu indikator pada Router\/Switch. Jika merah atau mati, periksa adaptor power.\n2. Coba ping ke gateway lokal (misal 192.168.1.1) untuk memastikan koneksi internal.\n3. Lakukan ping ke DNS Google (8.8.8.8) untuk memastikan koneksi luar.\n4. Jika koneksi lambat terjadi pada satu perangkat, cek kabel LAN atau modul WiFi perangkat tersebut.\n5. Jika masalah terjadi di satu area atau gedung, laporkan segera ke Tim Network IT di 089688267122 untuk cek jalur fiber optic atau konfigurasi switch distribusi.\n\nJika masalah berlanjut, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: SOP Internet Mati]"
+    },
+    {
+        "id": "C15",
+        "category": "Jaringan & Internet",
+        "pesan": "One business unit cannot connect to the internal network while other units are normal.",
+        "subject": "Satu unit bisnis tidak bisa terhubung ke jaringan internal",
+        "priority": "High",
+        "manual": 64,
+        "ai": 31,
+        "pesan_balasan": "Silakan lakukan langkah-langkah berikut untuk menangani masalah jaringan di unit bisnis tersebut:\n\n1. Periksa lampu indikator pada Router\/Switch setempat. Jika merah atau mati, periksa adaptor power.\n2. Coba ping ke gateway lokal (misal 192.168.1.1) untuk memastikan koneksi ke jaringan.\n3. Jika tidak ada respon, periksa kabel LAN atau modul WiFi perangkat di unit tersebut.\n4. Jika unit tersebut masih tidak terhubung, segera laporkan ke Tim Network IT di 089688267122 untuk cek jalur fiber optic atau konfigurasi switch distribusi.\n\nJika masalah belum teratasi, disarankan untuk membuat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: SOP Internet Mati]"
+    },
+    {
+        "id": "C16",
+        "category": "Jaringan & Internet",
+        "pesan": "Network connection disconnects intermittently several times during operation.",
+        "subject": "Koneksi jaringan terputus-putus berulang kali saat operasional",
+        "priority": "High",
+        "manual": 67,
+        "ai": 32,
+        "pesan_balasan": "Periksa beberapa hal berikut untuk mengatasi masalah koneksi jaringan terputus-putus:\n\n1. Cek lampu indikator pada Router\/Switch. Jika ada yang merah atau mati, periksa adaptor power.\n2. Lakukan ping ke gateway lokal (misal 192.168.1.1) untuk memastikan koneksi ke jaringan lokal.\n3. Coba ping ke DNS Google (8.8.8.8) untuk memastikan koneksi ke luar.\n4. Jika masalah hanya terjadi pada satu perangkat, cek kabel LAN atau modul WiFi perangkat tersebut.\n5. Jika masalah terjadi di satu area atau gedung, segera laporkan ke Tim Network IT di 089688267122 untuk pemeriksaan jalur fiber optic atau konfigurasi switch distribusi.\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. [Sumber: SOP Internet Mati]"
+    },
+    {
+        "id": "C17",
+        "category": "CCTV",
+        "pesan": "One CCTV camera is offline while other cameras remain accessible.",
+        "subject": "Satu kamera CCTV offline sementara kamera lain normal",
+        "priority": "High",
+        "manual": 63,
+        "ai": 30,
+        "pesan_balasan": "Periksa kabel dan koneksi dari kamera CCTV yang offline. Pastikan kabel terpasang dengan baik dan tidak ada kerusakan. Jika menggunakan koneksi jaringan, periksa apakah kamera mendapatkan alamat IP yang benar. Coba restart kamera CCTV tersebut. Jika masih offline, laporkan ke Tim Network IT untuk pemeriksaan lebih lanjut. \n\n[Sumber: SOP Internet Mati]"
+    },
+    {
+        "id": "C18",
+        "category": "CCTV",
+        "pesan": "CCTV live view is available but recorded footage cannot be played back.",
+        "subject": "CCTV live view normal tetapi rekaman tidak dapat diputar ulang",
+        "priority": "High",
+        "manual": 69,
+        "ai": 33,
+        "pesan_balasan": "Pastikan bahwa rekaman CCTV telah tersimpan dengan baik. Coba langkah-langkah berikut:\n\n1. Periksa kapasitas penyimpanan hard disk. Pastikan tidak penuh.\n2. Cek pengaturan rekaman, pastikan fitur rekaman aktif dan jadwal rekaman sudah diatur dengan benar.\n3. Coba akses rekaman dari perangkat lain untuk memastikan masalah bukan pada perangkat yang digunakan.\n4. Restart perangkat DVR\/NVR dan coba lagi untuk memutar rekaman.\n\nJika masalah masih belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: Tidak ada informasi terkait CCTV dalam knowledge base]"
+    },
+    {
+        "id": "C19",
+        "category": "CCTV",
+        "pesan": "CCTV image is severely blurred\/dark and cannot be used for monitoring.",
+        "subject": "Tampilan gambar CCTV buram\/gelap dan tidak jelas",
+        "priority": "High",
+        "manual": 66,
+        "ai": 32,
+        "pesan_balasan": "Untuk mengatasi masalah gambar CCTV yang buram atau gelap, silakan lakukan langkah-langkah berikut:\n\n1. Periksa lensa kamera. Bersihkan lensa dengan kain lembut untuk menghilangkan debu atau kotoran.\n2. Pastikan kamera terpasang dengan benar dan tidak terhalang oleh objek apapun.\n3. Periksa pengaturan pencahayaan. Jika kamera memiliki pengaturan manual, sesuaikan dengan kondisi pencahayaan sekitar.\n4. Cek kabel dan koneksi. Pastikan kabel video dan daya terhubung dengan baik dan tidak ada kerusakan.\n5. Jika menggunakan kamera dengan fitur infrared, pastikan mode malam aktif jika diperlukan.\n\nJika setelah melakukan langkah-langkah di atas masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122."
+    },
+    {
+        "id": "C20",
+        "category": "CCTV",
+        "pesan": "All CCTV cameras at one location become inaccessible from the monitoring system.",
+        "subject": "Semua kamera CCTV di satu lokasi tidak dapat diakses",
+        "priority": "High",
+        "manual": 74,
+        "ai": 36,
+        "pesan_balasan": "Periksa koneksi jaringan di lokasi tersebut. Pastikan semua kabel dan switch berfungsi dengan baik. Jika jaringan stabil, restart perangkat CCTV dan monitoring system. Jika masalah tetap ada, buat tiket bantuan atau hubungi teknisi di \"089688267122\"."
+    },
+    {
+        "id": "C21",
+        "category": "Software POS",
+        "pesan": "POS application cannot be opened on the cashier computer.",
+        "subject": "Aplikasi POS tidak dapat dibuka pada komputer kasir",
+        "priority": "High",
+        "manual": 62,
+        "ai": 29,
+        "pesan_balasan": "Langkah penanganan untuk masalah aplikasi POS yang tidak dapat dibuka:\n\n1. Cek apakah aplikasi freeze\/hang. Jika iya, buka Task Manager (Ctrl + Shift + Esc), pilih aplikasi POS, dan klik 'End Task'. Buka kembali aplikasi.\n2. Jika muncul error koneksi database, pastikan PC kasir terhubung ke LAN dan server database dengan melakukan ping ke server 192.168.10.10.\n3. Periksa sisa memori\/storage pada komputer kasir. Hapus file cache temporary jika storage penuh.\n4. Jika error terjadi saat sinkronisasi data barang, lakukan restart service database local di kasir.\n5. Jika masalah berlanjut, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\nJika masih belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. [Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C22",
+        "category": "Software POS",
+        "pesan": "POS application closes unexpectedly when a transaction is saved.",
+        "subject": "Aplikasi POS tertutup tiba-tiba saat menyimpan transaksi",
+        "priority": "High",
+        "manual": 68,
+        "ai": 33,
+        "pesan_balasan": "Langkah penanganan untuk masalah aplikasi POS yang tertutup tiba-tiba saat menyimpan transaksi adalah sebagai berikut:\n\n1. Cek apakah aplikasi freeze\/hang. Jika iya, buka Task Manager (Ctrl + Shift + Esc), pilih aplikasi POS, dan klik 'End Task'. Buka kembali aplikasi.\n2. Pastikan PC kasir terhubung ke LAN dan server database. Lakukan ping ke server 192.168.10.10 untuk memastikan koneksi.\n3. Periksa sisa memori\/storage pada komputer kasir. Jika storage penuh, hapus file cache temporary.\n4. Jika error terjadi saat sinkronisasi data barang, restart service database lokal di kasir.\n5. Jika masalah masih berlanjut, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\nJika belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di \"089688267122\". [Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C23",
+        "category": "Software POS",
+        "pesan": "Product or price data in POS does not update after synchronization.",
+        "subject": "Data produk atau harga di POS tidak terupdate setelah sinkronisasi",
+        "priority": "High",
+        "manual": 65,
+        "ai": 31,
+        "pesan_balasan": "Langkah yang bisa Anda lakukan adalah sebagai berikut:\n\n1. Pastikan koneksi jaringan antara komputer kasir dan server database stabil. Lakukan ping ke server dengan alamat 192.168.10.10 untuk memastikan terhubung.\n2. Jika koneksi baik, coba restart service database lokal di komputer kasir.\n3. Setelah itu, lakukan sinkronisasi data barang kembali.\n\nJika masalah masih berlanjut, hubungi Tim Software IT untuk support remote login via AnyDesk. \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C24",
+        "category": "Software POS",
+        "pesan": "User can open POS but a specific menu\/function produces an application error.",
+        "subject": "Menu atau fungsi tertentu pada aplikasi POS menghasilkan error",
+        "priority": "High",
+        "manual": 61,
+        "ai": 29,
+        "pesan_balasan": "Langkah Penanganan untuk aplikasi POS yang menghasilkan error pada menu atau fungsi tertentu:\n\n1. Pastikan PC kasir terhubung ke LAN dan server database dengan melakukan ping ke server 192.168.10.10.\n2. Cek sisa memori\/storage pada komputer kasir. Hapus file cache temporary jika storage penuh.\n3. Jika error terjadi saat sinkronisasi data barang, lakukan restart service database lokal di kasir.\n4. Jika masalah masih berlanjut, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\nJika semua langkah di atas sudah dilakukan namun masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C25",
+        "category": "Software POS",
+        "pesan": "POS application runs slowly although the computer and network appear normal.",
+        "subject": "Aplikasi POS berjalan lambat meski komputer dan jaringan normal",
+        "priority": "Medium",
+        "manual": 70,
+        "ai": 34,
+        "pesan_balasan": "Coba langkah-langkah berikut untuk mengatasi aplikasi POS yang berjalan lambat:\n\n1. Cek sisa memori\/storage pada komputer kasir. Jika storage penuh, hapus file cache temporary.\n2. Jika masalah berlanjut, restart service database lokal di kasir.\n3. Jika masih lambat, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\nJika masalah belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C26",
+        "category": "Server & Database",
+        "pesan": "POS application cannot retrieve data because the database connection fails.",
+        "subject": "Aplikasi POS gagal ambil data karena koneksi database terputus",
+        "priority": "High",
+        "manual": 73,
+        "ai": 35,
+        "pesan_balasan": "Pastikan PC kasir terhubung ke jaringan LAN dan server database. Coba lakukan ping ke server dengan alamat IP 192.168.10.10. Jika tidak terhubung, periksa kabel LAN dan koneksi jaringan. Jika masalah masih berlanjut, restart service database lokal di kasir. Jika tetap tidak berhasil, hubungi Tim Software IT untuk support remote login via AnyDesk. \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C27",
+        "category": "Server & Database",
+        "pesan": "Several users cannot access the helpdesk\/POS server at the same time.",
+        "subject": "Beberapa user tidak dapat mengakses server POS secara bersamaan",
+        "priority": "High",
+        "manual": 68,
+        "ai": 33,
+        "pesan_balasan": "Pastikan semua pengguna terhubung ke jaringan LAN dengan baik. Cek koneksi jaringan dengan melakukan ping ke server database di alamat 192.168.10.10. Jika masih ada kendala, periksa apakah ada batasan jumlah koneksi pada server POS. Jika masalah berlanjut, hubungi Tim Software IT untuk support lebih lanjut. \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C28",
+        "category": "Server & Database",
+        "pesan": "New transaction data cannot be saved to the database.",
+        "subject": "Data transaksi baru tidak dapat disimpan ke database",
+        "priority": "High",
+        "manual": 66,
+        "ai": 32,
+        "pesan_balasan": "Langkah penanganan untuk masalah ini adalah sebagai berikut:\n\n1. Pastikan PC kasir terhubung ke jaringan LAN dan server database. Coba ping server dengan alamat 192.168.10.10.\n2. Periksa apakah ada error koneksi database yang muncul di aplikasi POS.\n3. Cek sisa memori\/storage pada komputer kasir. Jika penyimpanan penuh, hapus file cache temporary.\n4. Jika masalah masih berlanjut, restart service database lokal di kasir.\n5. Jika semua langkah di atas tidak menyelesaikan masalah, hubungi Tim Software IT untuk support remote login via AnyDesk.\n\nJika kendala belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. [Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C29",
+        "category": "Server & Database",
+        "pesan": "Database query\/report takes unusually long to load but eventually succeeds.",
+        "subject": "Query atau laporan database membutuhkan waktu sangat lama untuk dimuat",
+        "priority": "Medium",
+        "manual": 71,
+        "ai": 35,
+        "pesan_balasan": "Pastikan PC yang digunakan untuk mengakses database terhubung dengan baik ke jaringan LAN. Lakukan ping ke server database (192.168.10.10) untuk memastikan koneksi stabil. Jika koneksi baik, periksa sisa memori\/storage pada komputer. Jika storage penuh, hapus file cache temporary. Jika masalah berlanjut, restart service database lokal. Jika masih belum teratasi, hubungi Tim Software IT untuk support remote login via AnyDesk. \n\n[Sumber: SOP Software POS Error]"
+    },
+    {
+        "id": "C30",
+        "category": "Server & Database",
+        "pesan": "Scheduled database backup fails while normal application access remains available.",
+        "subject": "Backup database otomatis gagal meski akses sistem tetap normal",
+        "priority": "High",
+        "manual": 65,
+        "ai": 31,
+        "pesan_balasan": "Untuk mengatasi masalah backup database yang gagal, lakukan langkah-langkah berikut:\n\n1. Periksa koneksi jaringan antara server database dan perangkat yang menjalankan backup.\n2. Pastikan tidak ada masalah dengan ruang penyimpanan pada lokasi backup.\n3. Cek log error pada aplikasi backup untuk mengetahui penyebab kegagalan.\n4. Jika perlu, coba jalankan backup secara manual untuk melihat apakah ada pesan error yang muncul.\n5. Jika masalah berlanjut, hubungi Tim Software IT untuk dukungan lebih lanjut.\n\nJika belum teratasi, silakan buat tiket bantuan atau hubungi teknisi di 089688267122. \n\n[Sumber: SOP Software POS Error]"
+    }
+]

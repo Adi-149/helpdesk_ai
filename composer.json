@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "adi/helpdesk-ai",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Enterprise IT Helpdesk & Ticketing System with Knowledge Base RAG & Google Gemini AI",
+    "keywords": ["laravel", "helpdesk", "ticketing", "gemini-ai", "llm", "rag", "it-support"],
     "license": "MIT",
     "require": {
         "php": "^8.1",

@@ -73,6 +73,7 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::patch('/admin/users/{user}/role', [AdminController::class, 'updateRole'])->name('admin.users.update-role');
     Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
     Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
+    Route::get('/admin/reports/print', [ReportController::class, 'print'])->name('admin.reports.print');
 
     // Knowledge Base Management
     Route::get('/admin/knowledge-base', [KnowledgeBaseController::class, 'index'])->name('admin.knowledge-base.index');
